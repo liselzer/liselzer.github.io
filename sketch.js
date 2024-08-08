@@ -13,7 +13,7 @@ function setup() {
     ];
 
     pacman1 = new PacMan(0, 0, 2, 0, color(249, 201, 0), pathPoints, 0);
-    pacman2 = new PacMan(width, height, -2, 0, color(0, 191, 255), pathPoints, 2);
+    pacman2 = new PacMan(200, 200, -2, 0, color(0, 191, 255), pathPoints, 2);
 }
 
 function draw() {
