@@ -4,6 +4,7 @@ let pathPoints = [];
 function setup() {
     let canvas = createCanvas(340, 340);
     canvas.parent(document.querySelector('.canvas-container'));
+
     pathPoints = [
         { x: 0, y: 0 },
         { x: width, y: 0 },
@@ -11,8 +12,8 @@ function setup() {
         { x: 0, y: height }
     ];
 
-    pacman1 = new PacMan(50, 0, 2, 0, color(249, 201, 0), pathPoints, 0);
-    pacman2 = new PacMan(width - 50, height, -2, 0, color(0, 191, 255), pathPoints, 2);
+    pacman1 = new PacMan(0, 0, 2, 0, color(249, 201, 0), pathPoints, 0);
+    pacman2 = new PacMan(width, height, -2, 0, color(0, 191, 255), pathPoints, 2);
 }
 
 function draw() {
@@ -45,6 +46,7 @@ class PacMan {
         this.dy = sin(angle) * 2;
         this.x += this.dx;
         this.y += this.dy;
+
         if (dist(this.x, this.y, this.targetPoint.x, this.targetPoint.y) < 2) {
             this.currentPointIndex = (this.currentPointIndex + 1) % this.path.length;
             this.targetPoint = this.path[this.currentPointIndex];
