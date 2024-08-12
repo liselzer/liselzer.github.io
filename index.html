@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html>
-  <head>
+
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Business Card</title>
     <link rel="stylesheet" href="styles.css">
-  </head>
-  <body>
-    <div class="bio-content">
-    <p>
-      Lilly Selzer is a data visualization expert who transforms complex data 
-      into clear and engaging visuals. 
-      Their praxis combines technical proficiency and an aesthetic understanding 
-      of design principles. Passionate about making data 
-      accessible, Lilly brings a unique blend of skills and creativity 
-      to every project. Explore their work to see how they make data come alive
-    </p>
-    <div class="canvas-container">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-      <script src="sketch.js"></script>
-  </div>
-</div>
-    
-  </body>
+</head>
+  
+<body>
+    <div class="card">
+        <h1 id="name">Lilly Selzer</h1>
+        <p class="role">Current Role: Scientific Designer</p>
+        <p class="education">Education: Biopsychology, Major</p>
+        <p class="github"> GitHub: <a href="https://github.com/liselzer" target="_blank">liselzer</a></p>
+        <p class="music">Lilly Selzer is a data visualization expert who transforms complex data into clear and engaging visuals. Their praxis combines technical proficiency and an aesthetic understanding of design principles. Passionate about making data accessible, Lilly brings a unique blend of skills and creativity to every project. Explore their work to see how they make data come alive</p>
+        <button onclick="toggleAbout()">About Me</button>
+        <div id="about" class="hidden">
+        </div>
+        <div class="contacts">
+            <p>Email: <a href="mailto:youremail@example.com">lilly.jselzer@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/lillybelle-selzer-619839245/" target="_blank">Lilly Selzer</a></p> 
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>
