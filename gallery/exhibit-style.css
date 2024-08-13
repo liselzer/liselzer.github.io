@@ -56,9 +56,9 @@ body {
 
   .carousel-container {
     position: relative;
-    width: 80%; /* Adjust as needed */
+    width: 80%;
     margin: auto;
-    overflow: hidden; /* Hide overflowing images */
+    overflow: hidden;
 }
 
 .carousel {
@@ -68,8 +68,8 @@ body {
 
 .carousel-image {
     width: 100%;
-    height: auto; /* Maintain aspect ratio */
-    object-fit: contain; /* Ensure images fit within their container */
+    height: auto;
+    object-fit: contain;
 }
 
 button.prev, button.next {
@@ -81,6 +81,7 @@ button.prev, button.next {
     border: none;
     padding: 10px;
     cursor: pointer;
+    z-index: 10;
 }
 
 button.prev {

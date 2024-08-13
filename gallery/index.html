@@ -10,11 +10,15 @@
     <div class="gallery-container">
       <h1>The Mind's Orchestra: fMRI in Concert</h1>
       <h4>by Lilly Selzer</h4>
-      <div class="image-row">
-        <img src="piano.png" alt="Piano" class="gallery-image" />
-        <img src="plot.png" alt="Project 2" class="gallery-image" />
-        <img src="code1.png" alt="Project 2" class="gallery-image" />
-        <img src="code2.png" alt="Project 2" class="gallery-image" />
+      <div class="carousel-container">
+        <div class="carousel">
+            <img src="piano.png" alt="Piano" class="carousel-image" />
+            <img src="plot.png" alt="Project 2" class="carousel-image" />
+            <img src="code1.png" alt="Project 2" class="carousel-image" />
+            <img src="code2.png" alt="Project 2" class="carousel-image" />
+        </div>
+        <button class="prev">‹</button>
+        <button class="next">›</button>
     </div>
       <p>
         "Neural Resonance: The Symphony of fMRI" explores the transformation of
@@ -36,30 +40,54 @@
       <img src="project3.jpg" alt="Project 3" class="gallery-image" />
       <p>This is my abstract.</p>
     </div>
-
-    <script src="script.js"></script>
   </body>
 </html>
 <script>
-const carousel = document.querySelector('.carousel');
-const images = document.querySelectorAll('.carousel-image');
-const prevButton = document.querySelector('.prev');
-const nextButton = document.querySelector('.next');
+    const carousel = document.querySelector('.carousel');
+    const images = document.querySelectorAll('.carousel-image');
+    const prevButton = document.querySelector('.prev');
+    const nextButton = document.querySelector('.next');
 
-let index = 0;
+    let index = 0;
+    let startX = 0;
+    let isDragging = false;
 
-function showImage(index) {
-    const offset = -index * 100;
-    carousel.style.transform = `translateX(${offset}%)`;
-}
+    function showImage(index) {
+        const offset = -index * 100;
+        carousel.style.transform = `translateX(${offset}%)`;
+    }
 
-prevButton.addEventListener('click', () => {
-    index = (index > 0) ? index - 1 : images.length - 1;
-    showImage(index);
-});
+    prevButton.addEventListener('click', () => {
+        index = (index > 0) ? index - 1 : images.length - 1;
+        showImage(index);
+    });
 
-nextButton.addEventListener('click', () => {
-    index = (index < images.length - 1) ? index + 1 : 0;
-    showImage(index);
-});
+    nextButton.addEventListener('click', () => {
+        index = (index < images.length - 1) ? index + 1 : 0;
+        showImage(index);
+    });
+
+    carousel.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].clientX;
+        isDragging = true;
+    });
+
+    carousel.addEventListener('touchmove', (e) => {
+        if (isDragging) {
+            const touchX = e.touches[0].clientX;
+            const difference = startX - touchX;
+
+            if (difference > 50) { // Swipe left
+                nextButton.click();
+                isDragging = false;
+            } else if (difference < -50) { // Swipe right
+                prevButton.click();
+                isDragging = false;
+            }
+        }
+    });
+
+    carousel.addEventListener('touchend', () => {
+        isDragging = false;
+    });
 </script>
