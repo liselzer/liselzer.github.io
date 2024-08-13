@@ -53,3 +53,16 @@ body {
     border: 0;
     border-top: 1px solid #eee;
   }
+
+  .image-row {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Adjust the gap between images as needed */
+  }
+  
+  .gallery-image {
+    max-width: 45%; /* Adjust this value based on your layout */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
