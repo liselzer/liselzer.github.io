@@ -1,64 +1,95 @@
 body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-    text-align: center;
-  }
-  
-  .gallery-container {
+    background-color: #FAF3E0; /* Pastel yellow background */
+    color: #4a9dae; /* Teal text color */
+    font-family: 'Rubik', sans-serif; /* Clean and modern font */
+    text-align: center; /* Center-align text globally */
+}
+
+.gallery-container {
     max-width: 900px;
-    margin: 0 auto;
+    margin: 40px auto; /* Center container horizontally */
+    padding: 30px;
+    background-color: #FFFFFF; /* White background for container */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for a fun effect */
+    border-radius: 16px; /* More rounded corners */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center content horizontally */
+    position: relative; /* To position the decorative elements */
+}
+
+h2 {
+    font-family: 'Rubik Doodle Shadow', cursive;
+    font-weight: 400; /* Balanced font weight */
+    font-size: 2.5rem; /* Larger font size for impact */
+    color: #4a9dae; /* Teal color for headings */
+    margin: 0;
     padding: 20px;
-    background-color: #fff;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  h1 {
-    font-size: 2em;
-    color: #4a90e2;
-    margin-bottom: 10px;
-  }
-  
-  h4 {
-    font-size: 1.2em;
-    color: #888;
-    margin-top: -10px;
-    margin-bottom: 20px;
-  }
-  
-  .gallery-image {
+    border: 3px solid #4a9dae; /* Teal border */
+    border-radius: 12px; /* Rounded corners */
+    background: radial-gradient(circle, #FFFFFF 70%, rgba(255, 255, 255, 0.9) 100%); /* Feathered gradient */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Soft shadow */
+    display: inline-block; /* Ensure padding is applied properly */
+    position: relative;
+    z-index: 1; /* Ensure it’s above the decorative element */
+}
+
+h2::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    border-radius: 12px;
+    z-index: -1;
+}
+
+h4 {
+    font-size: 1.2rem; /* Slightly larger font size for subheadings */
+    color: #4a9dae; /* Teal color for subheadings */
+    margin: 10px 0 20px; /* Margin for spacing */
+}
+
+.gallery-image {
     width: 100%;
     max-width: 600px;
     height: auto;
-    border-radius: 8px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .gallery-image:hover {
-    transform: scale(1.05);
-  }
-  
-  p {
-    font-size: 1em;
-    line-height: 1.6;
-    margin-top: 20px;
-  }
-  
-  hr {
-    margin: 40px 0;
-    border: 0;
-    border-top: 1px solid #eee;
-  }
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .carousel-container {
+.gallery-image:hover {
+    transform: scale(1.05); /* Slight zoom effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Enhanced shadow on hover */
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 20px 0;
+    color: #4a9dae; /* Teal color for paragraphs */
+    max-width: 800px; /* Limit paragraph width for readability */
+}
+
+hr {
+    margin: 40px auto;
+    border: 0;
+    border-top: 2px dashed #4a9dae; /* Dashed line in teal */
+    width: 80%; /* Adjust width to fit container */
+}
+
+.carousel-container {
     position: relative;
-    width: 80%;
-    margin: auto;
+    width: 90%;
+    margin: 20px auto; /* Center carousel horizontally */
     overflow: hidden;
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow */
 }
 
 .carousel {
@@ -69,25 +100,33 @@ body {
 .carousel-image {
     width: 100%;
     height: auto;
-    object-fit: contain;
+    object-fit: cover; /* Adjust to cover container */
+    border-radius: 12px; /* Rounded corners */
 }
 
 button.prev, button.next {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
+    background-color: rgba(74, 157, 174, 0.8); /* Teal background for buttons */
+    color: #fff; /* White text color */
     border: none;
-    padding: 10px;
+    padding: 12px 20px;
     cursor: pointer;
-    z-index: 10;
+    border-radius: 50%;
+    font-size: 1.5rem; /* Larger font size for arrows */
+    transition: background-color 0.3s ease; /* Smooth background transition */
+    z-index: 10; /* Ensure buttons are above other content */
 }
 
 button.prev {
-    left: 10px;
+    left: 15px; /* Position left button */
 }
 
 button.next {
-    right: 10px;
+    right: 15px; /* Position right button */
+}
+
+button.prev:hover, button.next:hover {
+    background-color: rgba(74, 157, 174, 1); /* Darker teal on hover */
 }
