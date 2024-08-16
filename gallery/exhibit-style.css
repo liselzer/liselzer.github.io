@@ -98,9 +98,9 @@ hr {
 }
 
 .carousel-image {
-    width: 100%;
-    height: auto;
-    object-fit: cover; /* Adjust to cover container */
+    flex: 0 0 100%; /* Ensure each image takes up the full width of the container */
+    height: 400px; /* Set a fixed height to maintain uniform size */
+    object-fit: cover; /* Ensure images cover the container while maintaining aspect ratio */
     border-radius: 12px; /* Rounded corners */
 }
 
