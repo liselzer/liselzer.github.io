@@ -3,8 +3,9 @@ function setup() {
     pixelDensity(1);
   }
   
-  let n = 0;
-  function draw() {
+let n = 0;
+
+function draw() {
     clear();
     fill(n);
     noStroke();
