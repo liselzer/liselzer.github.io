@@ -3,7 +3,7 @@ body {
     font-family: 'Montserrat', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f5f5f5;
+    background-color: black;
     color: #333;
     scroll-behavior: smooth;
 }
@@ -16,7 +16,7 @@ body {
 
 /* Header Styles */
 header {
-    background-color: #fff;
+    background-color: black;
     padding: 20px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -27,7 +27,7 @@ header .logo {
 }
 
 header .logo a {
-    color: #333;
+    color: white;
     font-size: 2em;
     font-weight: 700;
     text-decoration: none;
@@ -46,7 +46,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #333;
+    color: white;
     text-decoration: none;
     font-weight: 500;
     padding: 10px 0;
@@ -55,14 +55,14 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: #00704a;
+    color: 	#002eff;
 }
 
 /* Hero Section Styles */
 section.hero {
     text-align: center;
     padding: 100px 20px;
-    background-color: #00704a;
+    background-color: 	#002eff;
     color: #fff;
     min-height: 60vh;
     display: flex;
