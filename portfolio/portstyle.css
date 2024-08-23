@@ -3,7 +3,7 @@ body {
     font-family: "Luckiest Guy", cursive;
     margin: 0;
     padding: 0;
-    background-color: black;
+    background-color: #007BFF;
     color: white;
     scroll-behavior: smooth;
 }
@@ -78,7 +78,7 @@ section.hero .content {
 
 section.hero h1 {
     font-size: 3em;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     font-weight: 700;
     position: relative;
     top: 20px;
