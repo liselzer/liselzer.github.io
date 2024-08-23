@@ -55,14 +55,14 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: 	#002eff;
+    color: 	#007BFF;
 }
 
 /* Hero Section Styles */
 section.hero {
     text-align: center;
     padding: 100px 20px;
-    background-color: 	#002eff;
+    background-color: 	#007BFF;
     color: #fff;
     min-height: 60vh;
     display: flex;
