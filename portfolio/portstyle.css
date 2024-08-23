@@ -1,6 +1,6 @@
 /* General Styles */
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Luckiest Guy", cursive;
     margin: 0;
     padding: 0;
     background-color: black;
@@ -80,7 +80,20 @@ section.hero h1 {
     font-size: 3em;
     margin-bottom: 20px;
     font-weight: 700;
+    position: relative;
+    top: 20px;
+    text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px #36454F;
+  animation-name: bounce;
+  animation-duration: .5s;
+  animation-iteration-count:3;
+  animation-timing-function: ease-in-out;
 }
+@keyframes bounce{
+    100%{
+      top:-20px;
+      text-shadow:0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc, 0 10px 10px #36454F 
+    }
+  }
 
 section.hero p {
     font-size: 1.2em;
