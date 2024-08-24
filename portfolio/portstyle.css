@@ -82,7 +82,10 @@ section.hero h1 {
     font-weight: 700;
     position: relative;
     top: 20px;
-    text-shadow: 0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 0 9px 0 transparent, 0 10px 10px #36454F;
+    text-shadow: 0 1px 0 #007BFF, 0 2px 0 #007BFF, 
+    0 3px 0#007BFF, 0 4px 0 #007BFF, 0 5px 0 #007BFF, 
+    0 6px 0 transparent, 0 7px 0 transparent, 0 8px 0 transparent, 
+    0 9px 0 transparent, 0 10px 10px #36454F;
   animation-name: bounce;
   animation-duration: .9s;
   animation-iteration-count:1;
@@ -106,8 +109,8 @@ section.hero p {
 .btn {
     display: inline-block;
     padding: 10px 30px;
-    background-color: #fff;
-    color: #002eff;
+    background-color:#007BFF;
+    color: white;
     text-decoration: none;
     border-radius: 5px;
     transition: background-color 0.3s, color 0.3s;
@@ -115,7 +118,7 @@ section.hero p {
 }
 
 .btn:hover {
-    background-color:#002eff;
+    background-color:#FF6F00;
     color: #fff;
 }
 
