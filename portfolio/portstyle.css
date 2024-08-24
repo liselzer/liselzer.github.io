@@ -3,8 +3,8 @@ body {
     font-family: "Luckiest Guy", cursive;
     margin: 0;
     padding: 0;
-    background-color: #007BFF;
-    color: white;
+    background-color: white;
+    color: #007BFF;
     scroll-behavior: smooth;
 }
 
@@ -27,7 +27,7 @@ header .logo {
 }
 
 header .logo a {
-    color: white;
+    color: #007BFF;
     font-size: 2em;
     font-weight: 700;
     text-decoration: none;
@@ -46,7 +46,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: white;
+    color: #007BFF;
     text-decoration: none;
     font-weight: 500;
     padding: 10px 0;
@@ -55,15 +55,15 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: 	#007BFF;
+    color: 	#FF6F00;
 }
 
 /* Hero Section Styles */
 section.hero {
     text-align: center;
     padding: 100px 20px;
-    background-color: 	#007BFF;
-    color: #fff;
+    background-color: 	white;
+    color: #007BFF;
     min-height: 60vh;
     display: flex;
     align-items: center;
@@ -91,7 +91,10 @@ section.hero h1 {
 @keyframes bounce{
     100%{
       top:-20px;
-      text-shadow:0 1px 0 #ccc, 0 2px 0 #ccc, 0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 0 9px 0 #ccc, 0 10px 10px #36454F 
+      text-shadow:0 1px 0 #ccc, 0 2px 0 #ccc, 
+      0 3px 0 #ccc, 0 4px 0 #ccc, 0 5px 0 #ccc, 
+      0 6px 0 #ccc, 0 7px 0 #ccc, 0 8px 0 #ccc, 
+      0 9px 0 #ccc, 0 10px 10px #FF6F00 
     }
   }
 
