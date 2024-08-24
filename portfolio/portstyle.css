@@ -28,6 +28,7 @@ body {
 
 /* Main content area to fill the space */
 .hero {
+    background-image: url('glass.png');
     flex: 1;
     display: flex;
     justify-content: center;
