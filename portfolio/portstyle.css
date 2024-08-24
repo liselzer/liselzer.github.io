@@ -29,6 +29,8 @@ body {
 /* Main content area to fill the space */
 .hero {
     background-image: url('glass.png');
+    background-size: cover; /* Cover the entire section */
+    background-position: center;
     flex: 1;
     display: flex;
     justify-content: center;
