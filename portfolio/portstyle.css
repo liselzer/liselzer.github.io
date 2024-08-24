@@ -1,8 +1,16 @@
 /* General Styles */
-body {
-    font-family: Futura;
+/* Reset and basic styling */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
+}
+
+/* Flexbox layout for sticky footer */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     font-family: Futura;
     background: #FFFACD;
     color: #89c7e0;
@@ -13,6 +21,11 @@ body {
     width: 90%;
     margin: 0 auto;
     max-width: 1200px;
+}
+
+/* Main content area to fill the space */
+.main-content {
+    flex: 1;  /* This makes the content area expand to fill the available space */
 }
 
 /* Header Styles */
@@ -46,7 +59,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color:#89c7e0;
+    color: #89c7e0;
     text-decoration: none;
     font-weight: 500;
     padding: 10px 0;
@@ -55,40 +68,40 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: 	#FFFACD;
+    color: #FFFACD;
 }
 
-
-
+/* Wavy text styles */
 .wavy {
     -webkit-box-reflect: below -4px linear-gradient(transparent, rgba(0, 0, 0, 0.2));
-  }
-  
-  .wavy span {
+}
+
+.wavy span {
     position: relative;
     display: inline-block;
     font-size: 2em;
     text-transform: uppercase;
-    animation: animate .4s ease-in-out 1;
+    animation: animate 0.4s ease-in-out 1;
     animation-delay: calc(0.1s * var(--i));
-  }
-  
+}
+
 @keyframes animate {
     0% {
-      transform: translateY(1px);
+        transform: translateY(1px);
     }
     20% {
-      transform: translateY(-25px);
+        transform: translateY(-25px);
     }
     40%, 100% {
-      transform: translateY(-47px);
+        transform: translateY(-47px);
     }
-  }
+}
 
+/* Button Styles */
 .btn {
     display: inline-block;
     padding: 10px 30px;
-    background-color:#007BFF;
+    background-color: #007BFF;
     color: white;
     text-decoration: none;
     border-radius: 5px;
@@ -97,7 +110,7 @@ header nav ul li a:hover {
 }
 
 .btn:hover {
-    background-color:#FFFACD;
+    background-color: #FFFACD;
     color: #fff;
 }
 
@@ -208,7 +221,7 @@ footer {
 }
 
 .footer-section ul li a:hover {
-    color:  #FFFACD;
+    color: #FFFACD;
 }
 
 .footer-bottom {
