@@ -10,7 +10,7 @@ header ul{
 }
 /* Flexbox layout for sticky footer */
 body {
-    background-image: url("glass.png");
+    background-image: "glass.png";
     display: flex;
     flex-direction: column;
     min-height: 100vh;
