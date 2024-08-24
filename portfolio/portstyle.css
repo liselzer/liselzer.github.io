@@ -1,10 +1,11 @@
 /* General Styles */
 body {
-    font-family: "Luckiest Guy", cursive;
+    font-family: Futura;
     margin: 0;
     padding: 0;
-    background-color: white;
-    color: #007BFF;
+    font-family: Futura;
+    background: #FFFACD;
+    color: #89c7e0;
     scroll-behavior: smooth;
 }
 
@@ -26,7 +27,7 @@ header .logo {
 }
 
 header .logo a {
-    color: #007BFF;
+    color: #89c7e0;
     font-size: 2em;
     font-weight: 700;
     text-decoration: none;
@@ -45,7 +46,7 @@ header nav ul li {
 }
 
 header nav ul li a {
-    color: #007BFF;
+    color:#89c7e0;
     text-decoration: none;
     font-weight: 500;
     padding: 10px 0;
@@ -54,7 +55,7 @@ header nav ul li a {
 }
 
 header nav ul li a:hover {
-    color: 	#FF6F00;
+    color: 	#FFFACD;
 }
 
 
@@ -72,7 +73,7 @@ header nav ul li a:hover {
     animation-delay: calc(0.1s * var(--i));
   }
   
-  @keyframes animate {
+@keyframes animate {
     0% {
       transform: translateY(1px);
     }
@@ -96,7 +97,7 @@ header nav ul li a:hover {
 }
 
 .btn:hover {
-    background-color:#FF6F00;
+    background-color:#FFFACD;
     color: #fff;
 }
 
@@ -207,7 +208,7 @@ footer {
 }
 
 .footer-section ul li a:hover {
-    color:  #FF6F00;
+    color:  #FFFACD;
 }
 
 .footer-bottom {
