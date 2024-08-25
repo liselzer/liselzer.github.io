@@ -29,7 +29,7 @@ body {
 /* Main content area to fill the space */
 .hero {
     background-image: url('glass.png');
-    background-size: cover; 
+    background-size: cover 300px; 
     background-position: center;
     flex: 1;
     display: flex;
