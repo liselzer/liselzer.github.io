@@ -26,28 +26,30 @@
 
     </header>
     
-    <form action="https://api.web3forms.com/submit" method="POST">
-
-        <!-- Replace with your Access Key -->
-        <input type="hidden" name="access_key" value="e19001c0-3850-400b-8fef-3eaf0cafc2fd">
+    <div class="container">
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <!-- Replace with your Access Key -->
+            <input type="hidden" name="access_key" value="e19001c0-3850-400b-8fef-3eaf0cafc2fd">
     
-        <!-- Form Inputs. Each input must have a name="" attribute -->
-        <label for="fname">Name</label>
-        <input type="text" id="fname" name="name" placeholder="Your name..." required>
-        <label for="lname">Email</label>
-        <input type="email" id="lname"name="email" placeholder="Your email..." required>
-        <label for="subject">Message</label>
-        <textarea id="subject" name="message" required></textarea>
+            <!-- Form Inputs. Each input must have a name="" attribute -->
+            <label for="fname">Name</label>
+            <input type="text" id="fname" name="name" placeholder="Your name..." required>
     
-        <!-- Honeypot Spam Protection -->
-        <input type="checkbox" name="botcheck" class="hidden" placeholder="Write something..." style="display: none;">
+            <label for="lname">Email</label>
+            <input type="email" id="lname" name="email" placeholder="Your email..." required>
     
-        <!-- Custom Confirmation / Success Page -->
-        <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+            <label for="subject">Message</label>
+            <textarea id="subject" name="message" placeholder="Write your message..." required></textarea>
     
-        <button type="submit">Submit Form</button>
+            <!-- Honeypot Spam Protection -->
+            <input type="checkbox" name="botcheck" class="hidden" placeholder="Write something..." style="display: none;">
     
-    </form>
+            <!-- Custom Confirmation / Success Page -->
+            <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+    
+            <button type="submit">Submit Form</button>
+        </form>
+    </div>
 
     <footer>
         <p>&copy; 2024 My Portfolio | Designed by Me</p>
