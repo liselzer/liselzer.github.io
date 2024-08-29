@@ -24,23 +24,25 @@
         </nav>
     </header>
     
-    <section class="contact">
-        <div class="content">
-            <h2>Contact Me</h2>
-            <form action="https://formspree.io/YOUREMAIL" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                
-                <label for="message">Message:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-                
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
+    <form action="https://api.web3forms.com/submit" method="POST">
+
+        <!-- Replace with your Access Key -->
+        <input type="hidden" name="access_key" value="e19001c0-3850-400b-8fef-3eaf0cafc2fd">
+    
+        <!-- Form Inputs. Each input must have a name="" attribute -->
+        <input type="text" name="name" required>
+        <input type="email" name="email" required>
+        <textarea name="message" required></textarea>
+    
+        <!-- Honeypot Spam Protection -->
+        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+    
+        <!-- Custom Confirmation / Success Page -->
+        <!-- <input type="hidden" name="redirect" value="https://mywebsite.com/thanks.html"> -->
+    
+        <button type="submit">Submit Form</button>
+    
+    </form>
 
     <footer>
         <p>&copy; 2024 My Portfolio | Designed by Me</p>
