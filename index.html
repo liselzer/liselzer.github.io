@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Business Card</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="card">
@@ -20,13 +21,35 @@
             Lilly brings a unique blend of skills and creativity to every 
             project. Explore their work to see how they make data come alive</p>
         <button onclick="window.location.href='https://liselzer.github.io/gallery/'">My Gallery</button>
-        <div id="about" class="hidden">
-        </div>
+        <div id="about" class="hidden"></div>
         <div class="contacts">
             <p>Email: <a href="mailto:youremail@example.com">lilly.jselzer@gmail.com</a></p>
             <p>LinkedIn: <a href="https://www.linkedin.com/in/lillybelle-selzer-619839245/" target="_blank">Lilly Selzer</a></p> 
         </div>
+
+        <!-- Flower icons -->
+        <i class="fas fa-seedling flower" id="flower-1"></i>
+        <i class="fas fa-seedling flower" id="flower-2"></i>
+        <i class="fas fa-seedling flower" id="flower-3"></i>
+        <i class="fas fa-seedling flower" id="flower-4"></i>
+        <i class="fas fa-seedling flower" id="flower-5"></i>
     </div>
-    <script src = "sketch.js"></script>
+    <script src="sketch.js"></script>
+    <script>
+        // JavaScript to handle flower blooming on hover
+        document.getElementById("name").addEventListener("mouseover", function() {
+            const flowers = document.querySelectorAll(".flower");
+            flowers.forEach(flower => {
+                flower.classList.add("bloom");
+            });
+        });
+
+        document.getElementById("name").addEventListener("mouseout", function() {
+            const flowers = document.querySelectorAll(".flower");
+            flowers.forEach(flower => {
+                flower.classList.remove("bloom");
+            });
+        });
+    </script>
 </body>
 </html>
