@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GitHub Business Card</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="card">
@@ -27,41 +27,72 @@
             <p>LinkedIn: <a href="https://www.linkedin.com/in/lillybelle-selzer-619839245/" target="_blank">Lilly Selzer</a></p> 
         </div>
 
-        <!-- Flower icons -->
-        <i class="fas fa-seedling flower" id="flower-1"></i>
-        <i class="fas fa-seedling flower" id="flower-2"></i>
-        <i class="fas fa-seedling flower" id="flower-3"></i>
-        <i class="fas fa-seedling flower" id="flower-4"></i>
-        <i class="fas fa-seedling flower" id="flower-5"></i>
+        <!-- Flower images for blooming effect -->
+        <img src="water.png" class="flower hidden" id="flower-1" />
+        <img src="water.png" class="flower hidden" id="flower-2" />
+        <img src="water.png" class="flower hidden" id="flower-3" />
+        <img src="water.png" class="flower hidden" id="flower-4" />
+        <img src="water.png" class="flower hidden" id="flower-5" />
     </div>
+
+    <img id="frog" src="frog.png" alt="Frog" class="hidden" />
+    
     <script src="sketch.js"></script>
     <script>
-        // JavaScript to handle flower blooming on hover and cursor change on click
+        // JavaScript to handle flower blooming and frog animation
         const nameElement = document.getElementById("name");
-        let isFlowerCursor = false;
-
-        nameElement.addEventListener("mouseover", function() {
-            const flowers = document.querySelectorAll(".flower");
-            flowers.forEach(flower => {
-                flower.classList.add("bloom");
-            });
-        });
-
-        nameElement.addEventListener("mouseout", function() {
-            const flowers = document.querySelectorAll(".flower");
-            flowers.forEach(flower => {
-                flower.classList.remove("bloom");
-            });
-        });
+        const frog = document.getElementById("frog");
+        const flowers = document.querySelectorAll(".flower");
+        let isFlowerBlooming = false;
 
         nameElement.addEventListener("click", function() {
-            isFlowerCursor = !isFlowerCursor; // Toggle cursor state
-            if (isFlowerCursor) {
-                document.body.style.cursor = "url('flower-cursor.png'), auto"; // Change to flower cursor
+            // Toggle flower bloom and trigger frog hop
+            isFlowerBlooming = !isFlowerBlooming;
+
+            if (isFlowerBlooming) {
+                bloomFlowers();
+                hopFrog();
+                // Change cursor to flower image
+                document.body.style.cursor = 'url(lilly.png), auto'; // Change to your flower cursor image path
             } else {
-                document.body.style.cursor = "auto"; // Revert to normal cursor
+                resetFlowers();
+                // Change cursor back to default
+                document.body.style.cursor = 'auto';
             }
         });
+
+        function bloomFlowers() {
+            flowers.forEach((flower, index) => {
+                setTimeout(() => {
+                    flower.classList.remove("hidden");
+                    flower.classList.add("bloom");
+                }, index * 300); // Stagger the blooming
+            });
+        }
+
+        function resetFlowers() {
+            flowers.forEach(flower => {
+                flower.classList.add("hidden");
+                flower.classList.remove("bloom");
+            });
+        }
+
+        function hopFrog() {
+            frog.classList.remove("hidden");
+            frog.style.position = "absolute";
+            frog.style.left = "0"; // Start position
+            frog.style.top = "70%"; // Adjust as needed for the vertical position
+
+            let hopDistance = window.innerWidth; // Distance to hop
+            frog.style.transition = "left 2s linear"; // Smooth transition
+            frog.style.left = hopDistance + "px"; // Move to the right
+
+            // Hide the frog after it hops
+            setTimeout(() => {
+                frog.classList.add("hidden");
+                frog.style.left = "0"; // Reset position for the next hop
+            }, 2200); // Adjust time to match the hop duration
+        }
     </script>
 </body>
 </html>

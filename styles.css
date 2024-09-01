@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
@@ -7,7 +11,6 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
-  cursor: url('lilly.png'), auto;
 }
 
 .card {
@@ -90,44 +93,17 @@ button:hover {
 .flower {
   position: absolute;
   opacity: 0;
-  transition: transform 1.5s ease, opacity 3s ease; /* Slower bloom effect */
-  font-size: 24px; /* Adjust size as needed */
-  pointer-events: none; /* Prevent interaction with the flowers */
+  transition: opacity 1.5s ease; /* Transition effect */
 }
 
 .flower.bloom {
   opacity: 1;
-  transform: scale(1.5); /* Scale effect */
 }
 
-/* Random positioning for flowers */
-#flower-1 {
-  top: 10%;
-  left: 10%;
-}
-
-#flower-2 {
-  top: 30%;
-  left: 70%;
-}
-
-#flower-3 {
-  top: 60%;
-  left: 30%;
-}
-
-#flower-4 {
-  top: 80%;
-  left: 50%;
-}
-
-#flower-5 {
-  top: 50%;
-  left: 10%;
-}
-
-/* Font Awesome Seedling Icon */
-.fa-seedling {
-  color: #b377a7; /* Change the color of the seedling icon */
-  margin-left: 5px; /* Space between text and icon */
+/* Frog Image */
+#frog {
+  width: 50px; /* Adjust size as needed */
+  transition: left 2s linear;
+  position: absolute; /* Ensure it can be positioned */
+  top: 70%; /* Adjust vertical position */
 }
