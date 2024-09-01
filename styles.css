@@ -7,7 +7,7 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
-  cursor: url('flower-cursor.png'), auto;
+  cursor: url('lilly.png'), auto;
 }
 
 .card {
