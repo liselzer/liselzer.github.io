@@ -7,7 +7,7 @@ body {
   height: 100vh;
   margin: 0;
   overflow: hidden;
-  cursor: url('lilly.png'), auto;
+  cursor: url('flower-cursor.png'), auto;
 }
 
 .card {
@@ -90,7 +90,7 @@ button:hover {
 .flower {
   position: absolute;
   opacity: 0;
-  transition: transform 1.5s ease, opacity 3s ease; /* Slower bloom effect */
+  transition: transform 2s ease-in, opacity 3s ease-in; /* Slower bloom effect */
   font-size: 24px; /* Adjust size as needed */
   pointer-events: none; /* Prevent interaction with the flowers */
 }
