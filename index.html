@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,13 +28,12 @@
 
         <!-- Flower images for blooming effect -->
         <img src="water.png" class="flower hidden" id="flower-1" />
-        <img src="water.png" class="flower hidden" id="flower-2" />
-        <img src="water.png" class="flower hidden" id="flower-3" />
-        <img src="water.png" class="flower hidden" id="flower-4" />
-        <img src="water.png" class="flower hidden" id="flower-5" />
+        <img  src="water.png" class="flower hidden" id="flower-3" />
+        <img  src="water.png" class="flower hidden" id="flower-4" />
+        <img  src="water.png" class="flower hidden" id="flower-5" />
+        
+        <img id="frog" src="frog.png" alt="Frog" class="hidden" />
     </div>
-
-    <img id="frog" src="frog.png" alt="Frog" class="hidden" />
 
     <script src="sketch.js"></script>
     <script>
@@ -79,17 +79,17 @@
             frog.classList.remove("hidden");
             frog.style.position = "absolute";
             frog.style.left = "0"; // Start position
-            frog.style.top = "70%"; // Adjust as needed for the vertical position
+            frog.style.bottom = "10%"; // Adjust as needed for the vertical position within the card
 
-            let hopDistance = window.innerWidth; // Distance to hop
-            frog.style.transition = "left 2s linear"; // Smooth transition
+            let hopDistance = 100; // Distance to hop within the card
+            frog.style.transition = "left 0.5s linear"; // Smooth transition
             frog.style.left = hopDistance + "px"; // Move to the right
 
             // Hide the frog after it hops
             setTimeout(() => {
                 frog.classList.add("hidden");
                 frog.style.left = "0"; // Reset position for the next hop
-            }, 2200); // Adjust time to match the hop duration
+            }, 600); // Adjust time to match the hop duration
         }
     </script>
 </body>
