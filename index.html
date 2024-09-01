@@ -1,31 +1,30 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Business Card</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Business Card</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="card">
         <h1 id="name">Lilly Selzer</h1>
         <p class="role">Current Role: Scientific Designer</p>
         <p class="education">Education: Biopsychology, Major</p>
-        <p class="github">GitHub: <a href="https://github.com/liselzer" target="_blank" rel="noopener noreferrer">liselzer</a></p>
+        <p class="github"> GitHub: <a href="https://github.com/liselzer" target="_blank">liselzer</a></p>
         <p class="music">Lilly Selzer is a data visualization expert who transforms complex data 
             into clear and engaging visuals. Their praxis combines 
             technical proficiency and an aesthetic understanding of 
             design principles. Passionate about making data accessible, 
             Lilly brings a unique blend of skills and creativity to every 
-            project. Explore their work to see how they make data come alive.</p>
+            project. Explore their work to see how they make data come alive</p>
         <button onclick="window.location.href='https://liselzer.github.io/gallery/'">My Gallery</button>
         <div id="about" class="hidden"></div>
         <div class="contacts">
-            <p>Email: <a href="mailto:lilly.jselzer@gmail.com">lilly.jselzer@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/lillybelle-selzer-619839245/" target="_blank" rel="noopener noreferrer">Lilly Selzer</a></p> 
+            <p>Email: <a href="mailto:youremail@example.com">lilly.jselzer@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/lillybelle-selzer-619839245/" target="_blank">Lilly Selzer</a></p> 
         </div>
 
         <!-- Flower icons -->
@@ -37,19 +36,31 @@
     </div>
     <script src="sketch.js"></script>
     <script>
-        // JavaScript to handle flower blooming on hover
-        document.getElementById("name").addEventListener("mouseover", function() {
+        // JavaScript to handle flower blooming on hover and cursor change on click
+        const nameElement = document.getElementById("name");
+        let isFlowerCursor = false;
+
+        nameElement.addEventListener("mouseover", function() {
             const flowers = document.querySelectorAll(".flower");
             flowers.forEach(flower => {
                 flower.classList.add("bloom");
             });
         });
 
-        document.getElementById("name").addEventListener("mouseout", function() {
+        nameElement.addEventListener("mouseout", function() {
             const flowers = document.querySelectorAll(".flower");
             flowers.forEach(flower => {
                 flower.classList.remove("bloom");
             });
+        });
+
+        nameElement.addEventListener("click", function() {
+            isFlowerCursor = !isFlowerCursor; // Toggle cursor state
+            if (isFlowerCursor) {
+                document.body.style.cursor = "url('flower-cursor.png'), auto"; // Change to flower cursor
+            } else {
+                document.body.style.cursor = "auto"; // Revert to normal cursor
+            }
         });
     </script>
 </body>
