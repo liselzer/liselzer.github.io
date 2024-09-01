@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -31,25 +32,20 @@
         <img src="water.png" class="flower hidden" id="flower-3" />
         <img src="water.png" class="flower hidden" id="flower-4" />
         <img src="water.png" class="flower hidden" id="flower-5" />
-        
-        <img id="frog" src="frog.png" alt="Frog" class="hidden" />
     </div>
 
-    <script src="sketch.js"></script>
     <script>
-        // JavaScript to handle flower blooming and frog animation
+        // JavaScript to handle flower blooming
         const nameElement = document.getElementById("name");
-        const frog = document.getElementById("frog");
         const flowers = document.querySelectorAll(".flower");
-        let isFlowerBlooming = false;
+        let areFlowersBlooming = false;
 
         nameElement.addEventListener("click", function() {
-            // Toggle flower bloom and trigger frog hop
-            isFlowerBlooming = !isFlowerBlooming;
+            // Toggle flower bloom
+            areFlowersBlooming = !areFlowersBlooming;
 
-            if (isFlowerBlooming) {
+            if (areFlowersBlooming) {
                 bloomFlowers();
-                hopFrog();
                 // Change cursor to lily image
                 document.body.style.cursor = 'url(lilly.png), auto'; // Change to your lily cursor image path
             } else {
@@ -73,23 +69,6 @@
                 flower.classList.add("hidden");
                 flower.classList.remove("bloom");
             });
-        }
-
-        function hopFrog() {
-            frog.classList.remove("hidden");
-            frog.style.position = "absolute";
-            frog.style.left = "0"; // Start position
-            frog.style.bottom = "10%"; // Adjust as needed for the vertical position within the card
-
-            let hopDistance = 100; // Distance to hop within the card
-            frog.style.transition = "left 0.5s linear"; // Smooth transition
-            frog.style.left = hopDistance + "px"; // Move to the right
-
-            // Hide the frog after it hops
-            setTimeout(() => {
-                frog.classList.add("hidden");
-                frog.style.left = "0"; // Reset position for the next hop
-            }, 600); // Adjust time to match the hop duration
         }
     </script>
 </body>

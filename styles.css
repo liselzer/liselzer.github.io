@@ -21,8 +21,7 @@ body {
   text-align: center;
   width: 350px;
   position: relative;
-  overflow: hidden; /* Ensure frog and flowers stay within the card */
-  z-index: 1;
+  overflow: hidden; /* Ensure flowers stay within the card */
 }
 
 /* Spinning Gradient Background */
@@ -53,7 +52,7 @@ body {
   cursor: pointer;
 }
 
-.title, .location, .role, .education, .github, .music {
+.role, .education, .github, .music {
   margin: 10px 0;
   color: #555;
 }
@@ -85,10 +84,6 @@ button:hover {
   display: none;
 }
 
-.contacts {
-  margin-top: 20px;
-}
-
 /* Flower Animation */
 .flower {
   position: absolute;
@@ -98,13 +93,5 @@ button:hover {
 
 .flower.bloom {
   opacity: 1;
-}
-
-/* Frog Image */
-#frog {
-  width: 50px; /* Adjust size as needed */
-  transition: left 0.5s linear; /* Match the hopping duration */
-  position: absolute; /* Ensure it can be positioned */
-  bottom: 10%; /* Position the frog at the bottom of the card */
-  left: 0; /* Start position */
+  /* Add any additional styles for blooming flowers here, such as scaling */
 }
