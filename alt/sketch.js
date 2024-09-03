@@ -9,229 +9,98 @@ let gameOver = false;
 let score = 0;
 let startTime;
 let elapsedTime = 0;
-let gameState = "menu";
+let gameState = "menu";  
 let obstacleSpeed = 2; 
 let waveSpeed = 0.01;
 let speedIncreaseInterval = 3000; 
 let lastSpeedIncreaseTime = 0;
 let waveAmplitude = 40; 
 let waveBaseY; 
-let winTime = 60000; // Win condition: 60 seconds
+let winTime = 60000;
 
 function preload() {
-    surferImage = loadImage('surfer.png');
-    sharkFinImage = loadImage('shark.png');
-    rockImage = loadImage('rock.jpg');
-    backgroundImage = loadImage('sunset.avif');
+    surferImage = loadImage('https://your-actual-image-url.png'); 
+    sharkFinImage = loadImage('https://your-actual-image-url.png'); 
+    rockImage = loadImage('https://your-actual-image-url.png'); 
+    backgroundImage = loadImage('https://your-actual-image-url.png'); 
 }
 
 function setup() {
-    createCanvas(800, 600);
-    frameRate(60);
-    waveBaseY = height * 0.6;
+    let canvas = createCanvas(windowWidth, windowHeight);
+    canvas.parent('sketch-container');
+    waveBaseY = height / 2;
+    surfer = createVector(width / 2, waveBaseY);
+    startTime = millis();
 }
 
 function draw() {
+    background(0);
     if (gameState === "menu") {
-        drawMenu();
-    } else if (gameState === "play") {
+        textAlign(CENTER, CENTER);
+        textSize(32);
+        fill(255);
+        text("Press ENTER to Start", width / 2, height / 2);
+    } else if (gameState === "playing") {
         image(backgroundImage, 0, 0, width, height);
-        drawWave();
-
-        if (!gameOver) {
-            surfer.update();
-            surfer.display();
-
-            if (frameCount % 60 === 0) {
-                let yPosition = random(waveBaseY - waveAmplitude, waveBaseY + waveAmplitude);
-                let isSharkFin = random() < 0.5; 
-                obstacles.push(new Obstacle(width, yPosition, isSharkFin));
-            }
-
-            for (let i = obstacles.length - 1; i >= 0; i--) {
-                obstacles[i].update();
-                obstacles[i].display();
-
-                if (surfer.hits(obstacles[i])) {
-                    gameOver = true;
-                }
-
-                if (obstacles[i].offscreen()) {
-                    obstacles.splice(i, 1);
-                    score++; 
-                }
-            }
-
-            if (millis() - lastSpeedIncreaseTime > speedIncreaseInterval) {
-                obstacleSpeed += 0.3; 
-                waveSpeed += 0.002; 
-                lastSpeedIncreaseTime = millis();
-            }
-
-            fill(255);
-            textSize(20);
-            textAlign(LEFT);
-            text('Score: ' + score, 10, 30);
-            elapsedTime = millis() - startTime;
-            text('Time: ' + Math.floor(elapsedTime / 1000) + 's', 10, 60);
-
-            if (elapsedTime >= winTime) {
-                gameOver = true;
-                fill(0, 255, 0);
-                textSize(50);
-                textAlign(CENTER);
-                text('You Win!', width / 2, height / 2);
-                textSize(20);
-                text('Press R to Restart', width / 2, height / 2 + 40);
-            }
-        } else {
-            if (elapsedTime < winTime) {
-                fill(255, 0, 0);
-                textSize(50);
-                textAlign(CENTER);
-                text('Game Over', width / 2, height / 2);
-            }
-            textSize(20);
-            text('Press R to Restart', width / 2, height / 2 + 40);
+        let currentTime = millis();
+        elapsedTime = currentTime - startTime;
+        if (elapsedTime >= winTime) {
+            gameState = "gameOver";
         }
-    }
-}
-
-function drawMenu() {
-    background(135, 206, 250); 
-    fill(255);
-    textSize(50);
-    textAlign(CENTER);
-    text('Surfer Game', width / 2, height / 2 - 20);
-    textSize(20);
-    text('Press ENTER to Start', width / 2, height / 2 + 30);
-}
-
-function drawWave() {
-    let waveColor = color(0, 102, 204);
-    let foamColor = color(255, 255, 255, 150);
-
-    noStroke();
-    fill(waveColor);
-
-    beginShape();
-    for (let x = 0; x <= width; x += .01) {
-        let y = waveBaseY + waveAmplitude * sin(waveSpeed * (x + waveOffset));
-        vertex(x, y);
-    }
-    vertex(width, height);
-    vertex(0, height);
-    endShape(CLOSE);
-
-    fill(foamColor);
-    for (let x = 0; x <= width; x += 10) {
-        let foamY = waveBaseY + waveAmplitude * sin(waveSpeed * (x + waveOffset)) + random(20, 20);
-        let foamSize = random(20, 50);
-        ellipse(x, foamY, foamSize, foamSize * 0.9);
-    }
-
-    waveOffset += obstacleSpeed * 0.5;
-}
-
-function startNewGame() {
-    surfer = new Surfer(100, waveBaseY); 
-    obstacles = [];
-    score = 0;
-    gameOver = false;
-    startTime = millis();
-    elapsedTime = 0;
-    obstacleSpeed = 2;
-    waveSpeed = 0.01;
-    lastSpeedIncreaseTime = millis(); 
-    gameState = "play";
-}
-
-class Surfer {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        this.width = 50;
-        this.height = 30;
-        this.isMovingUp = false;
-        this.isMovingDown = false;
-    }
-
-    display() {
-        image(surferImage, this.x, this.y, this.width, this.height);
-    }
-
-    update() {
-        if (this.isMovingUp) {
-            this.y -= 5;
+        waveOffset += waveSpeed;
+        let waveY = waveBaseY + sin(waveOffset) * waveAmplitude;
+        image(surferImage, surfer.x, waveY, 100, 100);
+        if (currentTime - lastSpeedIncreaseTime > speedIncreaseInterval) {
+            obstacleSpeed += 0.5;
+            waveSpeed += 0.002;
+            lastSpeedIncreaseTime = currentTime;
         }
-        if (this.isMovingDown) {
-            this.y += 5;
+        for (let i = obstacles.length - 1; i >= 0; i--) {
+            let obstacle = obstacles[i];
+            obstacle.x -= obstacleSpeed;
+            if (obstacle.type === "shark") {
+                image(sharkFinImage, obstacle.x, obstacle.y, 100, 100);
+            } else {
+                image(rockImage, obstacle.x, obstacle.y, 50, 50);
+            }
+            if (obstacle.x < -50) {
+                obstacles.splice(i, 1);
+            }
+            let d = dist(surfer.x, waveY, obstacle.x, obstacle.y);
+            if (d < 50) {
+                gameState = "gameOver";
+            }
         }
-
-        if (this.y < waveBaseY - waveAmplitude) {
-            this.y = waveBaseY - waveAmplitude;
-        } else if (this.y > waveBaseY + waveAmplitude) {
-            this.y = waveBaseY + waveAmplitude;
+        if (random(1) < 0.02) {
+            let obstacleType = random(["shark", "rock"]);
+            let obstacleY = random(waveBaseY - 50, waveBaseY + 50);
+            obstacles.push({ type: obstacleType, x: width, y: obstacleY });
         }
-    }
-
-    hits(obstacle) {
-        return (
-            this.x < obstacle.x + obstacle.width &&
-            this.x + this.width > obstacle.x &&
-            this.y < obstacle.y + obstacle.height &&
-            this.y + this.height > obstacle.y
-        );
+        fill(255);
+        textSize(24);
+        text(`Time: ${floor(elapsedTime / 1000)}s`, 10, 30);
+    } else if (gameState === "gameOver") {
+        textAlign(CENTER, CENTER);
+        textSize(32);
+        fill(255);
+        text("Game Over! Press R to Restart", width / 2, height / 2);
     }
 }
 
-class Obstacle {
-    constructor(x, y, isSharkFin) {
-        this.x = x;
-        this.y = y;
-        this.isSharkFin = isSharkFin;
-        this.width = random(30, 70); 
-        this.height = random(20, 50); 
-    }
-
-    display() {
-        if (this.isSharkFin) {
-            image(sharkFinImage, this.x, this.y, this.width, this.height);
-        } else {
-            image(rockImage, this.x, this.y, this.width, this.height);
-        }
-    }
-
-    update() {
-        this.x -= obstacleSpeed; 
-    }
-
-    offscreen() {
-        return this.x < -this.width;
-    }
-}
-
+// Prevent arrow keys from scrolling the page
 function keyPressed() {
-    if (key === 'Enter' && gameState === "menu") {
-        startNewGame(); 
+    if (keyCode === UP_ARROW || keyCode === DOWN_ARROW) {
+        event.preventDefault();
     }
-    if (keyCode === UP_ARROW) {
-        surfer.isMovingUp = true;
-    }
-    if (keyCode === DOWN_ARROW) {
-        surfer.isMovingDown = true;
-    }
-    if (key === 'r' && gameOver) {
-        startNewGame();
-    }
-}
 
-function keyReleased() {
-    if (keyCode === UP_ARROW) {
-        surfer.isMovingUp = false;
-    }
-    if (keyCode === DOWN_ARROW) {
-        surfer.isMovingDown = false;
+    if (gameState === "menu" && keyCode === ENTER) {
+        gameState = "playing";
+        startTime = millis();
+        obstacles = [];
+        obstacleSpeed = 2;
+        waveSpeed = 0.01;
+    } else if (gameState === "gameOver" && key === 'R') {
+        gameState = "menu";
     }
 }
 
