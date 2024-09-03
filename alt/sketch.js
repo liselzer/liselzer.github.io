@@ -19,10 +19,10 @@ let waveBaseY;
 let winTime = 60000;
 
 function preload() {
-    surferImage = loadImage('https://your-actual-image-url.png'); 
-    sharkFinImage = loadImage('https://your-actual-image-url.png'); 
-    rockImage = loadImage('https://your-actual-image-url.png'); 
-    backgroundImage = loadImage('https://your-actual-image-url.png'); 
+    surferImage = loadImage('surfer.png'); 
+    sharkFinImage = loadImage('shark.png'); 
+    rockImage = loadImage('rock.jpg'); 
+    backgroundImage = loadImage('sunset.avif'); 
 }
 
 function setup() {
