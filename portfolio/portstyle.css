@@ -368,6 +368,25 @@ button[type=submit]:hover {
     margin: 10px 0; /* Spacing between boxes */
 }
 
+.details-box li {
+    list-style: none;
+    padding: 0;
+}
+
+.details-box li {
+    margin-bottom: 10px;
+}
+
+.details-box ul li a {
+    color: #FFFACD;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.details-box ul li a:hover {
+    color: #6aa1b8;
+}
+
 .techniques-list {
     list-style-type: square;
     padding-left: 20px;
