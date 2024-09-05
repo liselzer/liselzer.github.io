@@ -1,0 +1,14 @@
+body {
+    margin: auto;
+    justify-content: center;
+    text-align: center;
+    font-family:fantasy;
+  }
+
+header{
+    background: red;
+    border-bottom: 3px solid black;
+    border-top: 3px solid black;
+
+}
+
