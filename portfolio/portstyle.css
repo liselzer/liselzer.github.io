@@ -1,16 +1,15 @@
-/* Reset and basic styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-header ul{
-   border-block: solid; 
+header ul {
+    border-block: solid;
 }
+
 /* Flexbox layout for sticky footer */
 body {
- 
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -18,6 +17,7 @@ body {
     background: #89c7e0;
     color: #89c7e0;
     scroll-behavior: smooth;
+    overflow: auto; /* Change this */
 }
 
 .container {
@@ -26,21 +26,60 @@ body {
     max-width: 1200px;
 }
 
+/* Position the canvas behind other elements */
+#canvas-container {
+    position: absolute; /* Ensure the canvas is positioned behind other content */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Send canvas to the background */
+}
+
 /* Main content area to fill the space */
 .hero {
-    background-image: url('glass.png');
-    background-size: cover; 
-    background-position: center;
+    background: url('path-to-your-background-image.jpg') no-repeat center center;
+    background-size: cover; /* Ensure the background covers the entire section */
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
+    position: relative; /* Position relative for absolute positioning of child elements */
+    overflow: hidden; /* Hide any overflow caused by animation */
+}
+
+/* Wavy Text Animation */
+.wavy {
+    display: inline-block;
+    color: #FFFACD; /* High contrast color */
+    text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.8); /* Improved text shadow for better contrast */
+}
+
+.wavy span {
+    position: relative;
+    display: inline-block;
+    font-size: 4em; /* Increased font size for better visibility */
+    text-transform: uppercase;
+    animation: animate 1s ease-in-out infinite; /* Adjust animation duration for a smoother effect */
+    animation-delay: calc(0.1s * var(--i));
+}
+
+/* Animation Keyframes */
+@keyframes animate {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-50px); /* Increased vertical movement for more pronounced animation */
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 /* Header Styles */
 header {
-    background-color:#FFFACD;
+    background-color: #FFFACD;
     padding: 20px 0;
 }
 
@@ -160,8 +199,8 @@ footer {
     border-top: 1px solid  #89c7e0;
     padding-top: 20px;
 }
-/* contact*/
 
+/* Contact Form */
 input[type=text], input[type=email], input[type=message], textarea {
     width: 100%;
     padding: 12px;
@@ -173,7 +212,7 @@ input[type=text], input[type=email], input[type=message], textarea {
     resize: vertical;
 }
 
-.contactForm label{
+.contactForm label {
     color: #FFFACD;
 }
 
@@ -190,7 +229,6 @@ button[type=submit] {
 /* Hover effect for submit button */
 button[type=submit]:hover {
     background-color: #6aa1b8;
-   
 }
 
 /* Style for container */
@@ -214,48 +252,6 @@ button[type=submit]:hover {
 .gallery-image {
     width: 100%;
     height: auto;
-    display: block;
-    transition: transform 0.5s;
-}
-
-.project-item:hover .gallery-image {
-    transform: scale(1.1);
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.5s;
-    color: white;
-}
-
-.project-gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); /* 4 columns */
-    gap: 2rem;
-    padding: 0 2rem;
-}
-
-.project-item {
-    position: relative;
-    overflow: hidden;
-    width: 100%;  /* Ensures project-item takes full width within grid */
-    height: 250px; /* Set a consistent height for all project items */
-}
-
-.gallery-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Ensures the image scales without stretching */
     display: block;
     transition: transform 0.5s;
 }
@@ -312,6 +308,7 @@ button[type=submit]:hover {
         grid-template-columns: 1fr; /* 1 column for mobile */
     }
 }
+
 .project-description {
     max-width: 1200px;
     margin: 0 auto;
@@ -368,26 +365,34 @@ button[type=submit]:hover {
     margin: 10px 0; /* Spacing between boxes */
 }
 
-.details-box li {
+.techniques-list li {
     list-style: none;
-    padding: 0;
+    margin-top: 10px;
 }
 
-.details-box li {
+.techniques-list li {
     margin-bottom: 10px;
 }
 
-.details-box ul li a {
+.techniques-list ul li a {
     color: #FFFACD;
     text-decoration: none;
     transition: color 0.3s;
 }
 
-.details-box ul li a:hover {
-    color: #6aa1b8;
+.techniques-list ul li a:hover {
+    color: #6aa1b8; /* Change color on hover */
 }
 
-.techniques-list {
-    list-style-type: square;
-    padding-left: 20px;
+.project-link {
+    text-decoration: none;
+    color: #FFFACD; /* Project link color */
+    padding: 10px;
+    background-color: #6aa1b8; /* Background for link */
+    border-radius: 5px; /* Rounded corners for link */
+    transition: background-color 0.3s; /* Transition for hover effect */
+}
+
+.project-link:hover {
+    background-color: #89c7e0; /* Change background on hover */
 }

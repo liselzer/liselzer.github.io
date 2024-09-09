@@ -3,45 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wanderer Lost - A Journey Through the Forest</title>
-    <link rel="stylesheet" href="altstyles.css" />
+    <title>Surfing Adventure: Ride the Waves</title>
+    <link rel="stylesheet" href="altstyles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
+    <script src="sketch.js" defer></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <header>
-        <h1>Wanderer Lost</h1>
+        <h1>Surfing Adventure: Ride the Waves</h1>
+        <button id="dark-mode-toggle" aria-label="Toggle Dark Mode">Toggle Dark Mode</button>
     </header>
+    <main>
+        <div class="main-content">
+            <div class="content">
+                <section class="game-section">
+                    <h2>Game Overview</h2>
+                    <p>
+                        Welcome to Surfing Adventure, a fun and interactive game where you ride the waves
+                        and dodge obstacles in the ocean. Choose your surfer and test your skills in this exciting challenge!
+                    </p>
+                    <img src="cody.gif" alt="Cody surfing" class="overview-gif">
+                </section>
 
-    <section>
-        <h2>The Journey</h2>
-        <p>
-            "Wanderer Lost, gentle ocean, stones turned." This narrative is meant to engage the user in a trip through the ocean as a surfer.
-            I orginally wanted to make a journey through the forest but the interactive elements of nature that I wanted to implement for that 
-            story would be beyond the capacity of p5.js. So I decided to alter my storyline and make a game of a surfer who is surfing at sunset 
-            who must avoid rocks and sharks as he surfs along the wave. I am also going to add a kelp forest instead of a tree forest at the footer-bottom
-            to stay in keeping with my original idea although it has now changed. 
-        </p>
-    </section>
+                <section class="game-section">
+                    <h2>Interactive Experience</h2>
+                    <p>
+                        Get ready to dive into the ocean! Click below to play the Surfing Adventure game.
+                    </p>
+                    <div id="surfer"></div> <!-- p5.js game -->
+                </section>
 
-    <section>
-        <div id="sketch-container"></div>
-    </section>
+                <button class="tab" aria-label="Toggle Related Resources" onclick="toggleTab('resources')">Related Resources</button>
+                <div id="resources" class="tab-content" style="display: none;">
+                    <p>For more tips on surfing techniques and ocean safety, check out the following resources:</p>
+                    <a href="https://www.surfing.org" target="_blank">Surfing Techniques and Resources</a>
+                </div>
+            </div>
 
-    <section>
-        <h2>Elements of the Journey</h2>
-        <ul>
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h2>Game Structure</h2>
+                <ul>
+                    <li>Surfers: Choose between a boy surfer and a girl surfer.</li>
+                    <li>Obstacles: Avoid shark fins and rocks.</li>
+                    <li>Goals: Survive for a set time to win the game.</li>
+                </ul>
 
-            <li>Gentle stream</li>
-            <li>Skipping stones</li>
-            <li>Lost wanderer</li>
-        </ul>
-    </section>
+                <h2>Visual Elements</h2>
+                <p>The game features waves, rocks, and sharks that the surfer must avoid.</p>
 
-    <section>
-        <h2>Explore More</h2>
-        <p>Learn more about the symbolism in nature on .</p>
-    </section>
+                <h2>Game Instructions</h2>
+                <p>Use the arrow keys to navigate through the waves.</p>
+                <p>Click on the surfer you want to use.</p>
+                <p>Try to avoid obstacles while surfing!</p>
+            </aside>
+        </div>
+    </main>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
-    <script src="sketch.js"></script>
+    <a href="#surfer" class="floating-btn">Play Now</a>
+
+    <footer>
+        <p>&copy; 2024 Surfing Adventure Game. By Lilly Selzer. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const toggleButton = document.getElementById('dark-mode-toggle');
+        const resourcesTab = document.getElementById('resources');
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        function toggleTab(tabId) {
+            const tab = document.getElementById(tabId);
+            tab.style.display = tab.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
 </body>
 </html>
