@@ -604,6 +604,7 @@ h3 {
     flex-direction: column;
     overflow-x: hidden; /* Prevent horizontal scroll */
 }
+
 .image-carousel {
     margin-top: 10px;
     position: relative;
@@ -612,6 +613,7 @@ h3 {
     margin-right: auto;
     overflow: hidden;
     border-radius: 15px;
+    max-width: 100%;
    
 }
 
@@ -622,7 +624,8 @@ h3 {
 }
 
 .carousel-slide {
-    display: flex; /* Ensures images are arranged in a row */
+    display: flex;
+    flex: 0 0 100%;/* Ensures images are arranged in a row */
 }
 
 .carousel-image {
@@ -669,6 +672,16 @@ h3 {
 
 .indicator.active {
     background-color:  #FFFACD;
+}
+
+@media (max-width: 600px) {
+    .carousel-button {
+        padding: 8px; /* Smaller buttons for small screens */
+    }
+    
+    .carousel-image {
+        height: auto; /* Maintain aspect ratio on small screens */
+    }
 }
 
 .audio-player {
