@@ -1,25 +1,66 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Portfolio</title>
-    <!-- Font from Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <!-- Link to external CSS -->
     <link rel="stylesheet" href="portstyle.css">
-    <!-- p5.js library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            position: relative;
+        }
+
+        .surfboard {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+            z-index: 10;
+            width: 100px;
+        }
+
+        .portfolio-hover:hover + .surfboard {
+            display: block;
+            animation: surf 2s forwards;
+        }
+
+        @keyframes surf {
+            0% {
+                transform: translate(-50%, 0);
+            }
+            25% {
+                transform: translate(calc(-50% - 50px), 50px);
+            }
+            50% {
+                transform: translate(calc(-50% + 50px), 100px);
+            }
+            75% {
+                transform: translate(calc(-50% - 50px), 150px);
+            }
+            100% {
+                transform: translate(calc(-50% + 50px), 200px);
+            }
+        }
+
+        /* Style for the dancing character */
+        .dancing-character {
+            position: absolute;
+            width: 50px; /* Adjust size */
+            transition: transform 0.5s; /* Smooth transition */
+        }
+    </style>
 </head>
 <body>
-    <img src="glass.png" alt="Background Image" class="background"> <!-- Background image as an <img> tag -->
-
+    <img src="glass.png" alt="Background Image" class="background">
+    
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Portfolio</a>
+                <a href="index.html" class="portfolio-hover">Portfolio</a>
             </div>
             <nav>
                 <ul>
@@ -29,9 +70,9 @@
                 </ul>
             </nav>
         </div>
+        <img src="surfer.jpg" alt="Surfboard" class="surfboard">
     </header>
 
-    <!-- p5.js canvas container -->
     <div id="canvas-container"></div>
 
     <section class="hero">
@@ -74,5 +115,34 @@
             </div>
         </div>
     </footer>
+
+    <!-- Dancing Character (using a placeholder image for this example) -->
+    <img src="cat.gif" alt="Dancing Cat" class="dancing-character" id="dancingCat" style="display: none;">
+
+    <script>
+        // Add click event to the Portfolio link
+        document.querySelector('.portfolio-hover').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+
+            const dancingCat = document.getElementById('dancingCat');
+            dancingCat.style.display = 'block'; // Show the dancing character
+
+            // Randomize initial position
+            dancingCat.style.left = Math.random() * window.innerWidth + 'px';
+            dancingCat.style.top = Math.random() * window.innerHeight + 'px';
+
+            // Animate the character
+            let animationDuration = 3000; // Animation lasts 3 seconds
+            dancingCat.style.transition = `transform ${animationDuration}ms`; // Set transition duration
+            dancingCat.style.transform = `translateY(-50px)`; // Move up
+
+            // Remove character after animation
+            setTimeout(() => {
+                dancingCat.style.display = 'none'; // Hide the dancing character
+                dancingCat.style.transform = 'translateY(0)'; // Reset position
+            }, animationDuration);
+        });
+    </script>
 </body>
 </html>
+

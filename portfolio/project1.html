@@ -19,7 +19,7 @@
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Portfolio</a></li>
+                    <li><a href="projects.html">My Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -29,7 +29,33 @@
     <section class="project-description">
         <h2>The Mind's Orchestra</h2>
         <div class="project-layout">
-            <img src="piano.png" alt="The Mind's Orchestra" class="project-image" />
+            <section class="image-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <img src="piano.png" alt="Image 1" class="carousel-image" />
+                        <img src="scatter.png" alt="Image 2" class="carousel-image" />
+                        <img src="scatter2.png" alt="Image 3" class="carousel-image" />
+                    </div>
+                    <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                    <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+                </div>
+                <div class="carousel-indicators">
+                    <span class="indicator" onclick="currentSlide(0)"></span>
+                    <span class="indicator" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                </div>
+                <div class="audio-player">
+                    <h3>Listen to the Composition</h3>
+                    <div class="audio-container">
+                        <audio controls class="audio-control">
+                            <source src="color_counts_brain-Piano.mp3" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                </div>
+                
+            </section>
+            
             <div class="project-details">
                 <p class="project-date">2024</p>
                 <p class="project-summary">This project transforms fMRI brain scans into a musical composition. Each brainwave is 
@@ -68,7 +94,44 @@
         <div class="footer-bottom">
             &copy; 2024 My Portfolio | Designed by Lilly Selzer
         </div>
-    </div>
     </footer>
+
+    <script>
+       let currentIndex = 0;
+
+function showSlide(index) {
+    const slides = document.querySelectorAll('.carousel-image');
+    const indicators = document.querySelectorAll('.indicator');
+
+    // Loop back to the start or end
+    if (index < 0) {
+        currentIndex = slides.length - 1; // Go to last slide
+    } else if (index >= slides.length) {
+        currentIndex = 0; // Go to first slide
+    } else {
+        currentIndex = index; // Set current index
+    }
+
+    // Update the carousel position
+    const offset = -currentIndex * 100; // Calculate offset for translation
+    document.querySelector('.carousel-slide').style.transform = `translateX(${offset}%)`;
+
+    // Update indicator styles
+    indicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === currentIndex);
+    });
+}
+
+function moveSlide(direction) {
+    showSlide(currentIndex + direction);
+}
+
+function currentSlide(index) {
+    showSlide(index);
+}
+
+// Initialize the first slide and indicator
+showSlide(currentIndex);
+    </script>
 </body>
 </html>
