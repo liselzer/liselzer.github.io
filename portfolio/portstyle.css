@@ -19,6 +19,14 @@ body {
     position: relative;
 }
 
+@media (max-width: 375px) {
+    .background {
+        background-image: url('path-to-small-screen-background.png'); /* Optimized image for small screens */
+        background-size: cover;
+        background-position: center center;
+    }
+}
+
 .background {
     position: absolute;
     top: 0;
