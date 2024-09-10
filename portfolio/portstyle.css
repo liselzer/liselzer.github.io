@@ -497,72 +497,99 @@ h3 {
 
 }
 /* about*/
-
-h2.wavy {
-    font-family: 'Luckiest Guy', cursive;
-    color: #89c7e0; /* Teal blue for a consistent look */
-    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3); /* Enhanced shadow for depth */
-    font-size: 3rem; /* Slightly larger for emphasis */
-    text-align: center;
-    margin-bottom: 20px;
-    animation: wave 1.5s infinite ease-in-out; /* Adds a wavy animation */
-}
-
-/* Wavy text animation */
-@keyframes wave {
-    0% { transform: rotate(0deg); }
-    25% { transform: rotate(2deg); }
-    50% { transform: rotate(-2deg); }
-    75% { transform: rotate(2deg); }
-    100% { transform: rotate(0deg); }
-}
-
-.profile-pictures {
+.split-screen {
     display: flex;
-    justify-content: center;
-    gap: 20px; /* Consistent spacing between images */
+    margin-top: 80px; /* Adjust for fixed header */
+    height: calc(100vh - 80px);
+    width: 100vw;
+}
+
+.left-panel, .right-panel {
+    flex: 1;
+    overflow: hidden; /* Prevent overflow within panels */
+}
+
+.left-panel {
+    flex: 1;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    overflow: hidden;
+
+}
+
+.profile-photo {
+    max-width: 80%; /* Adjust this value if needed to fit well */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.5s ease;
+}
+
+.profile-photo:hover {
+    transform: scale(1.05);
+}
+
+.right-panel {
+    overflow-y: auto; /* Allows scrolling within the right panel */
+}
+
+.right-panel h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #66a1b6;
+}
+
+.right-panel p {
+    font-size: 1.1rem;
+    line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.profile-image {
-    width: 180px; /* Slightly larger for visibility */
-    height: 180px; /* Keep images proportional */
-    border-radius: 50%; /* Circular images */
-    border: 5px solid #89c7e0; /* Teal blue border for consistency */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Subtle shadow for depth */
-    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+/* Skills Section */
+.skills-section {
+    margin-top: 30px;
 }
 
-.profile-image:hover {
-    transform: scale(1.1); /* Slight zoom on hover */
+.skills-section h2 {
+    font-size: 1.5rem;
+    color: #66a1b6;
+    margin-bottom: 15px;
 }
 
-.video-container {
-    text-align: center;
-    margin-top: 30px; /* More space around the video */
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.05); /* Soft background to highlight video */
+.skills {
+    display: flex;
+    gap: 10px; /* Reduced gap between skills */
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Align items to the start for tighter spacing */
+}
+
+.skill {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #66a1b6;
+    padding: 10px; /* Reduced padding */
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Gentle shadow around the container */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 120px; /* Adjust width if needed */
 }
 
-iframe {
-    border-radius: 10px; /* Rounded corners for the video */
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Shadow for the video */
+.skill i {
+    font-size: 2rem;
+    color: #66a1b6;
+    margin-bottom: 5px; /* Reduced margin-bottom */
 }
 
-/* Responsive design */
-@media (max-width: 768px) {
-    h2.wavy {
-        font-size: 2.5rem;
-    }
+.skill:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
 
-    .profile-pictures {
-        flex-direction: column;
-    }
-
-    .profile-image {
-        width: 140px;
-        height: 140px;
-    }
+.bb {
+    color: #FFFACD;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden; /* Prevent horizontal scroll */
 }

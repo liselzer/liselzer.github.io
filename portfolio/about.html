@@ -1,67 +1,80 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Me</title>
+    <title>About Me - Jane Doe</title>
     <link rel="stylesheet" href="portstyle.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script> <!-- Font Awesome for icons -->
 </head>
 <body>
     <header>
         <div class="container">
             <div class="logo">
-                <a href="index.html">Portfolio</a>
+                <a href="index.html">Jane Doe</a>
             </div>
             <nav>
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">My Projects</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
         </div>
     </header>
-    
-    <section class="about">
-        <div class="container">
-            <h2 class="wavy">About Me</h2>
-            <div class="about-content">
-                <div class="profile-pictures">
-                    <img src="me1.jpg" alt="Me in Twilight Cutout" class="profile-image" />
-                    <img src="me2.jpg" alt="Me Surfing" class="profile-image" />
-                </div>
-                <div class="about-text">
-                    <p>
-                        Hi! I'm Jane Doe, a surfer by day, aspiring Human-Computer Interaction (HCI) researcher by... well, also by day! When I'm not chasing the perfect wave or getting photo-bombed by Edward Cullen (see above), I'm busy exploring the intersection of creativity and technology.
-                    </p>
-                    <p>
-                        Whether I'm coding a new app or pretending I’m part of the "Twilight" saga in a cardboard cutout, I aim to blend fun with function. My journey through software development has been one wild ride, much like my surfing adventures — sometimes smooth, sometimes wiping out, but always exciting.
-                    </p>
-                    <p>
-                        Want to see me in action? Check out this video of me surfing (yes, I do more than just code in front of a screen!). It’s all about balance, both on the waves and in life — and that's what drives my approach to designing intuitive, engaging user experiences.
-                    </p>
-                    <div class="video-container">
-                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3pF8ppo3aS8?si=6372vf9ULYy9UlCa"
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen></iframe>
+ <div class ="bb">
+    <!-- Split Screen Layout -->
+    <section class="split-screen">
+        <div class="left-panel">
+            <img src="me1.jpg" alt="Jane Doe" class="profile-photo">
+        </div>
+        <div class="right-panel">
+            <h1>Hi, I'm Jane Doe</h1>
+            <p>
+                I'm a surfer by day, aspiring Human-Computer Interaction (HCI) researcher by... well, also by day!
+                When I'm not chasing the perfect wave, I'm busy exploring the intersection of creativity and technology.
+            </p>
+            <p>
+                My journey through software development has been one wild ride, much like my surfing adventures.
+                I aim to blend fun with function, creating intuitive and engaging user experiences.
+            </p>
+            <div class="skills-section">
+                <h2>My Skills</h2>
+                <div class="skills">
+                    <div class="skill">
+                        <i class="fas fa-code"></i>
+                        <p>Coding</p>
                     </div>
-                    <p>
-                        If you're as excited about HCI, surfing, or slightly embarrassing cutout photos as I am, feel free to explore my projects or <a href="contact.html">reach out</a>. Let's catch some waves — or code — together!
-                    </p>
+                    <div class="skill">
+                        <i class="fas fa-paint-brush"></i>
+                        <p>Design</p>
+                    </div>
+                    <div class="skill">
+                        <i class="fas fa-wave-square"></i>
+                        <p>Surfing</p>
+                    </div>
+                    <div class="skill">
+                        <i class="fas fa-user-friends"></i>
+                        <p>Teamwork</p>
+                    </div>
+                    <div class="skills">
+                        <div class="skill">
+                            <i class="fas fa-code"></i>
+                            <p>Coding</p>
+                        </div>
                 </div>
             </div>
         </div>
     </section>
+</div>
 
-    <footer>
-        <div class="footer-bottom">
-            &copy; 2024 My Portfolio | Designed by Me
-        </div>
-    </footer>
+<footer>
+    <div class="footer-bottom">
+        &copy; 2024 My Portfolio | Designed by Lilly Selzer
+    </div>
+</div>
+</footer>
 </body>
 </html>
