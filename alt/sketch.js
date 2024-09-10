@@ -280,7 +280,7 @@ class Surfer {
 class Obstacle {
     constructor(x, y, isSharkFin) {
         this.x = x;
-        this.y = random(370, 700);
+        this.y = random(370, 800);
         this.size = random(20, 100);
         this.isSharkFin = isSharkFin;
     }
