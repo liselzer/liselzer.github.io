@@ -14,6 +14,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
 </head>
 <body>
+    <img src="glass.png" alt="Background Image" class="background"> <!-- Background image as an <img> tag -->
+
     <header>
         <div class="container">
             <div class="logo">
@@ -22,7 +24,7 @@
             <nav>
                 <ul>
                     <li><a href="about.html">About</a></li>
-                    <li><a href="projects.html">Portfolio</a></li>
+                    <li><a href="projects.html">My Projects</a></li>
                     <li><a href="contact.html">Contact</a></li>
                 </ul>
             </nav>
@@ -58,7 +60,7 @@
                     <h3>Quick Links</h3>
                     <ul>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="projects.html">Projects</a></li>
+                        <li><a href="projects.html">My Projects</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
@@ -72,144 +74,5 @@
             </div>
         </div>
     </footer>
-
-    <!-- p5.js sketch script -->
-    <script>
-        let flowers = [];
-        let hoveredFlower = null;
-    
-        function setup() {
-            let canvas = createCanvas(windowWidth, windowHeight);
-            canvas.parent('canvas-container');
-            noLoop();
-            noStroke();
-    
-            // Draw gradient background
-            drawGradient();
-            
-            let numFlowersX = 20;
-            let numFlowersY = 16;
-            let flowerSpacingX = width / numFlowersX;
-            let flowerSpacingY = height / numFlowersY;
-    
-            for (let i = 0; i < numFlowersX; i++) {
-                for (let j = 0; j < numFlowersY; j++) {
-                    let x = i * flowerSpacingX + flowerSpacingX / 2;
-                    let y = j * flowerSpacingY + flowerSpacingY / 2;
-                    let flowerSize = random(30, 70);
-                    flowers.push(new Flower(x, y, flowerSize));
-                }
-            }
-        }
-    
-        function draw() {
-            drawGradient();
-            for (let flower of flowers) {
-                flower.update();
-                flower.display();
-            }
-        }
-    
-        function drawGradient() {
-            for (let i = 0; i <= height; i++) {
-                let inter = map(i, 0, height, 0, 1);
-                let c = lerpColor(color('#89c7e0'), color('#a0d9e0'), inter);
-                stroke(c);
-                line(0, i, width, i);
-            }
-        }
-    
-        function mouseMoved() {
-            let newHoveredFlower = null;
-    
-            for (let flower of flowers) {
-                if (flower.checkHover(mouseX, mouseY)) {
-                    newHoveredFlower = flower;
-                    break;
-                }
-            }
-    
-            if (hoveredFlower !== newHoveredFlower) {
-                if (hoveredFlower) {
-                    hoveredFlower.isHovered = false;
-                }
-                if (newHoveredFlower) {
-                    newHoveredFlower.isHovered = true;
-                }
-                hoveredFlower = newHoveredFlower;
-                redraw();
-            }
-        }
-    
-        class Flower {
-            constructor(x, y, size) {
-                this.x = x;
-                this.y = y;
-                this.size = size;
-                this.numPetals = int(random(6, 10)); // Increase petal count for a fuller look
-                this.petalColors = [
-                    color(255, 159, 128, random(150, 200)), // Soft coral
-                    color(139, 195, 74, random(150, 200)),  // Soft green
-                    color(255, 204, 128, random(150, 200)), // Soft yellow
-                    color(155, 89, 182, random(150, 200))   // Soft purple
-                ];
-                this.centerColor = color(255, 255, 255, random(150, 255)); // White center with some transparency
-                this.isHovered = false;
-                this.angle = 0;
-                this.rotationSpeed = 0.05;
-            }
-    
-            update() {
-                if (this.isHovered) {
-                    this.angle += this.rotationSpeed;
-                }
-            }
-    
-            display() {
-                push();
-                translate(this.x, this.y);
-                rotate(this.angle);
-    
-                fill(this.centerColor);
-                ellipse(0, 0, this.size * 0.3, this.size * 0.3);
-                
-                for (let i = 0; i < this.numPetals; i++) {
-                    let angle = TWO_PI / this.numPetals * i;
-                    let petalX = cos(angle) * this.size * 0.5;
-                    let petalY = sin(angle) * this.size * 0.5;
-                    
-                    let petalColor = random(this.petalColors);
-                    this.drawPetal(petalX, petalY, this.size * 0.4, petalColor);
-                }
-                
-                pop();
-            }
-    
-            drawPetal(x, y, petalSize, petalColor) {
-                fill(petalColor);
-                beginShape();
-                let numVertices = 24; // Increase vertices for smoother curves
-                let controlDist = petalSize * 0.6; // Distance for control points
-                
-                for (let i = 0; i < TWO_PI; i += TWO_PI / numVertices) {
-                    let xOffset = cos(i) * petalSize;
-                    let yOffset = sin(i) * petalSize;
-                    let controlX1 = x + cos(i - PI / 12) * controlDist;
-                    let controlY1 = y + sin(i - PI / 12) * controlDist;
-                    let controlX2 = x + cos(i + PI / 12) * controlDist;
-                    let controlY2 = y + sin(i + PI / 12) * controlDist;
-                    
-                    vertex(x + xOffset, y + yOffset);
-                    bezierVertex(controlX1, controlY1, controlX2, controlY2, x + xOffset, y + yOffset);
-                }
-                endShape(CLOSE);
-            }
-    
-            checkHover(mx, my) {
-                let d = dist(mx, my, this.x, this.y);
-                return d < this.size * 0.5;
-            }
-        }
-    </script>
 </body>
 </html>
