@@ -126,19 +126,31 @@
         // Add click event to the Portfolio link
         document.querySelector('.portfolio-hover').addEventListener('click', function(event) {
             event.preventDefault(); // Prevent default link behavior
-
+    
             const dancingCat = document.getElementById('dancingCat');
             dancingCat.style.display = 'block'; // Show the dancing character
-
-            // Randomize initial position
-            dancingCat.style.left = Math.random() * window.innerWidth + 'px';
-            dancingCat.style.top = Math.random() * window.innerHeight + 'px';
-
+    
+            // Get the width and height of the dancing cat
+            const catWidth = dancingCat.offsetWidth;
+            const catHeight = dancingCat.offsetHeight;
+    
+            // Constrain random position within the header's width and height
+            const header = document.querySelector('header');
+            const headerWidth = header.offsetWidth; // Get header width
+            const headerHeight = header.offsetHeight; // Get header height
+    
+            // Ensure cat stays within the header bounds
+            const maxLeft = headerWidth - catWidth; // Maximum left position
+            const maxTop = headerHeight - catHeight; // Maximum top position
+            
+            dancingCat.style.left = Math.random() * maxLeft + 'px'; // Randomize left position
+            dancingCat.style.top = Math.random() * maxTop + 'px'; // Randomize top position
+    
             // Animate the character
             let animationDuration = 3000; // Animation lasts 3 seconds
             dancingCat.style.transition = `transform ${animationDuration}ms`; // Set transition duration
             dancingCat.style.transform = `translateY(-50px)`; // Move up
-
+    
             // Remove character after animation
             setTimeout(() => {
                 dancingCat.style.display = 'none'; // Hide the dancing character

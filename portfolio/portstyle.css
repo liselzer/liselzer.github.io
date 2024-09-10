@@ -526,11 +526,11 @@ h3 {
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
     overflow: hidden;
-
 }
 
 .profile-photo {
     max-width: 80%; /* Adjust this value if needed to fit well */
+    max-height: 80%; /* Ensure the image does not exceed the container height */
     height: auto; /* Maintain aspect ratio */
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -539,6 +539,11 @@ h3 {
 
 .profile-photo:hover {
     transform: scale(1.05);
+}
+
+.right-panel {
+    flex: 1; /* Adjust the flex basis as needed */
+    padding: 20px; /* Optional: Add padding around the text */
 }
 
 .right-panel {
@@ -585,6 +590,9 @@ h3 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 120px; /* Adjust width if needed */
+    height: 100px; /* Added fixed height to ensure uniform size */
+    text-align: center;
+    justify-content: center;
 }
 
 .skill i {
