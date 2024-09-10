@@ -215,6 +215,11 @@ footer {
     color: #6aa1b8;
 }
 
+.footer-section-contact a{
+    text-decoration: none;
+    color: #89c7e0;
+}
+
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
