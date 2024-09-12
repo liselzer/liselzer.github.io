@@ -129,12 +129,12 @@ function drawMenu() {
     fill(255);
     textSize(60);
     textAlign(CENTER);
-    text('Surfer Game', width / 2, height / 2 - 100);
+    text('Uh-Oh!', width / 2, height / 2 - 100);
 
     // Instructions
     textSize(24);
     fill(255);
-    text('Choose Your Surfer:', width / 2, height / 2 - 50);
+    text('You are stuck out at sea. Choose Your Surfer So You can Surf to Land:', width / 2, height / 2 - 50);
 
 
     // Girl Surfer Button
