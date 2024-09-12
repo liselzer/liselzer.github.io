@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logo Design</title>
+    <link rel="stylesheet" href="portstyle.css">
+    <style>
+        .project-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-top: 20px;
+        }
+
+        .image-carousel {
+            flex: 1;
+            margin-right: 20px; /* Space between carousel and description */
+        }
+
+        .description-panel {
+            flex: 1;
+            max-width: 400px; /* Set a max width for the description panel */
+        }
+
+        .details-box,
+        .techniques-list {
+            margin-top: 10px;
+        }
+
+        .carousel-container {
+            position: relative;
+        }
+
+        .carousel-slide {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: auto; /* Ensure images maintain aspect ratio */
+        }
+
+        .carousel-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .carousel-button.prev {
+            left: 10px;
+        }
+
+        .carousel-button.next {
+            right: 10px;
+        }
+
+        .carousel-indicators {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: lightgray;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+
+        .indicator.active {
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">Portfolio</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">My Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="project-description">
+        <div class="content">
+            <h2>Logo Design</h2>
+            <div class="project-layout">
+                <section class="image-carousel">
+                    <div class="carousel-container">
+                        <div class="carousel-slide">
+                            <img src="Do.jpg" alt="Logo Design Image" class="carousel-image" />
+                        </div>
+                        <button class="carousel-button prev" onclick="moveSlide(-1)">&#10094;</button>
+                        <button class="carousel-button next" onclick="moveSlide(1)">&#10095;</button>
+                    </div>
+                    <div class="carousel-indicators">
+                        <span class="indicator" onclick="currentSlide(0)"></span>
+                    </div>
+                </section>
+
+                <div class="description-panel">
+                    <h3>Project Details</h3>
+                    <div class="details-box">
+                        <ul>
+                            <li>Design Focus: The "O" in the logo is stylized as a wave to represent fluidity and movement.</li>
+                            <li>Tools Used: Designed exclusively with Procreate to ensure detailed and vibrant visuals.</li>
+                            <li>Style: The wave is integrated seamlessly into the typography, enhancing the overall aesthetic of the logo.</li>
+                        </ul>
+                    </div>
+
+                    <h3>Techniques & Tools</h3>
+                    <ul class="techniques-list">
+                        <li>Procreate for digital illustration and design</li>
+                        <li>Use of brushes and textures to create a realistic wave effect</li>
+                        <li>Vectorization for scalability and adaptability</li>
+                    </ul>
+
+                    <h3>Challenges</h3>
+                    <div class="details-box">
+                        <p>Achieving the right balance between the wave and the letterform was a key challenge. It was crucial to ensure that the wave element was both visually appealing and harmonious with the typography. Iterative design and feedback played a significant role in refining the logo to its final form. Additionally, optimizing the design for various applications, from small digital icons to large print formats, required careful consideration and adjustment.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-bottom">
+            &copy; 2024 My Portfolio | Designed by Lilly Selzer
+        </div>
+    </footer>
+
+    <script>
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.carousel-image');
+            const indicators = document.querySelectorAll('.indicator');
+
+            // Loop back to the start or end
+            if (index < 0) {
+                currentIndex = slides.length - 1; // Go to last slide
+            } else if (index >= slides.length) {
+                currentIndex = 0; // Go to first slide
+            } else {
+                currentIndex = index; // Set current index
+            }
+
+            // Update the carousel position
+            const offset = -currentIndex * 100; // Calculate offset for translation
+            document.querySelector('.carousel-slide').style.transform = `translateX(${offset}%)`;
+
+            // Update indicator styles
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === currentIndex);
+            });
+        }
+
+        function moveSlide(direction) {
+            showSlide(currentIndex + direction);
+        }
+
+        function currentSlide(index) {
+            showSlide(index);
+        }
+
+        // Initialize the first slide and indicator
+        showSlide(currentIndex);
+    </script>
+</body>
+</html>
