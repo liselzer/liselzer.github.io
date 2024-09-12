@@ -26,13 +26,17 @@ let downKeyIsPressed = false;
 let song;
 
 function preload() {
-    song = loadSound("waves.mp3")
+    song = loadSound("waves.mp3");
     surferImage = loadImage('girlsurfer.webp');
     boySurferImage = loadImage('boysurfer.png');
     sharkFinImage = loadImage('shark.png');
     rockImage = loadImage('rock.png');
     backgroundImage = loadImage('sunset.avif');
     backgroundMusic = loadSound('waves.mp3');
+    
+    // Load sound effects
+    sharkChompSound = loadSound('sharkChompSound.mp3');
+    brokenBoardSound = loadSound('brokenBoardSound.mp3');
 }
 
 function setup() {
@@ -70,11 +74,14 @@ function draw() {
 
                 if (surfer.hits(obstacles[i])) {
                     gameOver = true;
-                    // Set the message based on the type of obstacle
+
+                    // Set the message and play the respective sound based on the type of obstacle
                     if (obstacles[i].isSharkFin) {
                         message = "Uh-oh! You got eaten by a shark.";
+                        sharkChompSound.play(); // Play shark chomp sound
                     } else {
                         message = "Uh-oh! You broke your board.";
+                        brokenBoardSound.play(); // Play broken board sound
                     }
                 }
 

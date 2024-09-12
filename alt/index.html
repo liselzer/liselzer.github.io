@@ -9,7 +9,43 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/addons/p5.sound.min.js"></script>
     <script src="sketch.js" defer></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Bubble styling */
+        .bubble-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Disable interaction */
+            z-index: 100; /* Make sure bubbles appear on top */
+            overflow: hidden;
+        }
 
+        .bubble {
+            position: absolute;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background-color: rgba(173, 216, 230, 0.7);
+            border-radius: 50%;
+            animation: rise 5s ease-in infinite;
+            filter: url(#bubble-blur);
+            opacity: 0;
+        }
+
+        /* Bubble animation */
+        @keyframes rise {
+            0% {
+                transform: translateY(0) scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) scale(1.5);
+                opacity: 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -21,19 +57,15 @@
             <div class="content">
                 <section class="game-section">
                     <h2>Game Overview</h2>
-                    <p>
-                        Welcome to Surfing Adventure, a fun and interactive game where you ride the waves
-                        and dodge obstacles in the ocean. Choose your surfer and test your skills in this exciting challenge!
-                    </p>
+                    <p>Welcome to Surfing Adventure, a fun and interactive game where you ride the waves
+                        and dodge obstacles in the ocean. Choose your surfer and test your skills in this exciting challenge!</p>
                     <img src="cody.gif" alt="Cody surfing" class="overview-gif">
                 </section>
 
                 <section class="game-section">
                     <h2>Interactive Experience</h2>
-                    <p>
-                        Get ready to dive into the ocean! Click below to play the Surfing Adventure game.
-                    </p>
-                    <div id="surfer"></div> <!-- p5.js game -->
+                    <p>Get ready to dive into the ocean! Click below to play the Surfing Adventure game.</p>
+                    <div id="surfer"></div>
                 </section>
 
                 <button class="tab" aria-label="Toggle Related Resources" onclick="toggleTab('resources')">Related Resources</button>
@@ -43,7 +75,6 @@
                 </div>
             </div>
 
-            <!-- Sidebar -->
             <aside class="sidebar">
                 <h2>Game Structure</h2>
                 <ul>
@@ -51,10 +82,8 @@
                     <li>Obstacles: Avoid shark fins and rocks.</li>
                     <li>Goals: Survive for a set time to win the game.</li>
                 </ul>
-
                 <h2>Visual Elements</h2>
                 <p>The game features waves, rocks, and sharks that the surfer must avoid.</p>
-
                 <h2>Game Instructions</h2>
                 <p>Use the arrow keys to navigate through the waves.</p>
                 <p>Click on the surfer you want to use.</p>
@@ -63,23 +92,77 @@
         </div>
     </main>
 
-    <a href="#surfer" class="floating-btn">Play Now</a>
+    <a href="#surfer" class="floating-btn" id="play-now">Play Now</a>
+
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+            <filter id="bubble-blur" x="0" y="0">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="3" />
+            </filter>
+        </defs>
+    </svg>
 
     <footer>
         <p>&copy; 2024 Surfing Adventure Game. By Lilly Selzer. All rights reserved.</p>
+        <div class="bubble-container" id="bubble-container"></div>
     </footer>
 
     <script>
         const toggleButton = document.getElementById('dark-mode-toggle');
-        const resourcesTab = document.getElementById('resources');
-
+        const playNowButton = document.getElementById('play-now');
+        const bubbleContainer = document.getElementById('bubble-container');
+    
         toggleButton.addEventListener('click', () => {
             document.body.classList.toggle('dark-mode');
         });
-
+    
         function toggleTab(tabId) {
             const tab = document.getElementById(tabId);
             tab.style.display = tab.style.display === 'none' ? 'block' : 'none';
+        }
+    
+        // Generate bubbles dynamically
+        playNowButton.addEventListener('click', () => {
+            // Start generating bubbles
+            let bubbleInterval = setInterval(() => {
+                for (let i = 0; i < 5; i++) { // Generate 5 bubbles at a time
+                    createBubble();
+                }
+            }, 500); // Generate bubbles every half-second
+    
+            // Stop generating bubbles after 5 seconds
+            setTimeout(() => {
+                clearInterval(bubbleInterval); // Stop bubble creation
+                clearBubbles(); // Clear remaining bubbles
+            }, 5000); // 5 seconds
+        });
+    
+        function createBubble() {
+            const bubble = document.createElement('div');
+            bubble.classList.add('bubble');
+    
+            // Randomize bubble position and size
+            const size = Math.random() * 30 + 10; // Bubble size between 10px and 40px
+            bubble.style.width = size + 'px';
+            bubble.style.height = size + 'px';
+            bubble.style.left = Math.random() * 100 + '%'; // Position along the width
+            bubble.style.animationDuration = Math.random() * 5 + 2 + 's'; // Randomize animation speed
+    
+            // Append bubble to container
+            bubbleContainer.appendChild(bubble);
+    
+            // Remove bubble after animation ends
+            bubble.addEventListener('animationend', () => {
+                bubble.remove();
+            });
+        }
+    
+        function clearBubbles() {
+            // Remove all bubbles from the container
+            const bubbles = document.querySelectorAll('.bubble');
+            bubbles.forEach(bubble => {
+                bubble.remove();
+            });
         }
     </script>
 </body>
