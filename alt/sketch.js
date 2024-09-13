@@ -24,6 +24,9 @@ let surferType = "girl"; // Default surfer type
 let upKeyIsPressed = false;
 let downKeyIsPressed = false;
 let song;
+let mode = 'menu';
+let currentFrameRate = 70; // Default frame rate
+let gameMode = 'normal';
 
 function preload() {
     song = loadSound("waves.mp3");
@@ -52,50 +55,56 @@ function setup() {
 
 function draw() {
     if (gameState === "menu") {
-        drawMenu();
+        drawMenu(); // Display the main menu
+    } else if (gameState === "selectMode") {
+        displayModeSelection(); // Show game mode selection
+    } else if (gameState === "selectSurfer") {
+        displaySurferSelection(); // Show surfer selection
     } else if (gameState === "play") {
-        image(backgroundImage, 0, 0, width, height);
-        drawWave();
-        drawSandBottom();
+        image(backgroundImage, 0, 0, width, height); // Draw background
+        drawWave(); // Draw the wave
+        drawSandBottom(); // Draw the sand bottom
 
         if (!gameOver) {
-            surfer.update();
-            surfer.display();
+            surfer.update(); // Update surfer's position
+            surfer.display(); // Draw the surfer
 
-            if (frameCount % 30 === 0) {
+            // Adjust the obstacle generation frequency based on frame rate
+            if (frameCount % (currentFrameRate / 2) === 0) { // Every 20 frames for 40 FPS or 35 frames for 70 FPS
                 let yPosition = random(waveBaseY - waveAmplitude + 40, waveBaseY + waveAmplitude - 40);
                 let isSharkFin = random() < 0.3;
-                obstacles.push(new Obstacle(width, yPosition, isSharkFin));
+                obstacles.push(new Obstacle(width, yPosition, isSharkFin)); // Create new obstacles
             }
 
             for (let i = obstacles.length - 1; i >= 0; i--) {
-                obstacles[i].update();
-                obstacles[i].display();
+                obstacles[i].update(); // Update obstacle position
+                obstacles[i].display(); // Draw the obstacle
 
-                if (surfer.hits(obstacles[i])) {
+                if (surfer.hits(obstacles[i])) { // Check for collision
                     gameOver = true;
 
-                    // Set the message and play the respective sound based on the type of obstacle
                     if (obstacles[i].isSharkFin) {
                         message = "Uh-oh! You got eaten by a shark.";
-                        sharkChompSound.play(); // Play shark chomp sound
+                        sharkChompSound.play(); // Play sound for shark collision
                     } else {
                         message = "Uh-oh! You broke your board.";
-                        brokenBoardSound.play(); // Play broken board sound
+                        brokenBoardSound.play(); // Play sound for board collision
                     }
                 }
 
                 if (obstacles[i].offscreen()) {
-                    obstacles.splice(i, 1);
+                    obstacles.splice(i, 1); // Remove offscreen obstacles
                 }
             }
 
+            // Increase speed over time
             if (millis() - lastSpeedIncreaseTime > speedIncreaseInterval) {
                 obstacleSpeed += 0.5 + (elapsedTime / 10000);
                 waveSpeed += 0.002; 
                 lastSpeedIncreaseTime = millis();
             }
 
+            // Display score and time
             fill(255);
             textSize(20);
             textAlign(LEFT);
@@ -103,6 +112,7 @@ function draw() {
             elapsedTime = millis() - startTime;
             text('Time: ' + Math.floor(elapsedTime / 1000) + 's', 10, 60);
 
+            // Check for win condition
             if (elapsedTime >= winTime) {
                 gameOver = true;
                 fill(0, 255, 0);
@@ -113,56 +123,90 @@ function draw() {
                 text('Press R to Restart', width / 2, height / 2 + 40);
             }
         } else {
-            drawPopup(message); // Draw the pop-up box with the message
+            drawPopup(message); // Draw game over message
             fill(255);
             textSize(20);
             textAlign(CENTER);
-            text('Press R to Restart', width / 2, height / 2 + 40); // Indicate to restart the game
+            text('Press R to Restart', width / 2, height / 2 + 40); 
         }
     }
 }
 
-function drawMenu() {
-    background(135, 206, 250); // Sky blue background
+function displayModeSelection() {
+    // Draw game mode selection buttons here
+    fill(255);
+    rect(width / 2 - 170, height / 2 + 220, 150, 50); // Normal mode button
+    rect(width / 2 + 20, height / 2 + 220, 150, 50); // Fast mode button
+    // Add text labels to buttons, e.g.:
+    fill(0);
+    textSize(20);
+    textAlign(CENTER);
+    text("Normal Mode", width / 2 - 95, height / 2 + 250);
+    text("Fast Mode", width / 2 + 95, height / 2 + 250);
+}
 
-    // Title
+function displaySurferSelection() {
+    // Draw surfer selection buttons here
+    fill(255);
+    rect(width / 2 - 170, height / 2 + 60, 150, 200); // Girl surfer button
+    rect(width / 2 + 20, height / 2 + 60, 150, 200); // Boy surfer button
+    // Add text labels to buttons, e.g.:
+    fill(0);
+    textSize(20);
+    textAlign(CENTER);
+    text("Girl Surfer", width / 2 - 95, height / 2 + 160);
+    text("Boy Surfer", width / 2 + 95, height / 2 + 160);
+}
+
+function drawMenu() {
+    background(135, 206, 250); 
+
     fill(255);
     textSize(60);
     textAlign(CENTER);
     text('Uh-Oh!', width / 2, height / 2 - 100);
 
-    // Instructions
     textSize(24);
     fill(255);
-    text('You are stuck out at sea. Choose Your Surfer So You can Surf to Land:', width / 2, height / 2 - 50);
-
+    text('You are stuck out in the ocean! Choose Your mode and then Surfer:', width / 2, height / 2 - 50);
 
     // Girl Surfer Button
     let girlButtonX = width / 2 - 170;
     let buttonY = height / 2 + 60;
     fill(240);
-    rect(girlButtonX, buttonY, 150, 200, 10); // Button for girl surfer
-    image(surferImage, girlButtonX + 10, buttonY + 20, 130, 130); // Adjusted position
+    rect(girlButtonX, buttonY, 150, 200, 10);
+    image(surferImage, girlButtonX + 10, buttonY + 20, 130, 130); 
     fill(0);
     textAlign(CENTER);
     textSize(20);
-    text('Girl Surfer', girlButtonX + 75, buttonY + 170); // Adjusted position
+    text('Girl Surfer', girlButtonX + 75, buttonY + 170); 
 
     // Boy Surfer Button
     let boyButtonX = width / 2 + 20;
     fill(240);
-    rect(boyButtonX, buttonY, 150, 200, 10); // Button for boy surfer
-    image(boySurferImage, boyButtonX + 10, buttonY + 20, 130, 130); // Adjusted position
+    rect(boyButtonX, buttonY, 150, 200, 10);
+    image(boySurferImage, boyButtonX + 10, buttonY + 20, 130, 130); 
     fill(0);
     textAlign(CENTER);
     textSize(20);
-    text('Boy Surfer', boyButtonX + 75, buttonY + 170); // Adjusted position
+    text('Boy Surfer', boyButtonX + 75, buttonY + 170); 
 
-    // Footer Text
-    fill(255);
-    textSize(16);
+    // Game Mode Buttons
+    let normalButtonX = width / 2 - 170;
+    let fastButtonX = width / 2 + 20;
+    fill(240);
+    rect(normalButtonX, buttonY + 220, 150, 50, 10); // Normal Mode Button
+    fill(0);
     textAlign(CENTER);
+    textSize(20);
+    text('Easy Mode', normalButtonX + 75, buttonY + 245);
     
+    fill(240);
+    rect(fastButtonX, buttonY + 220, 150, 50, 10); // Fast Mode Button
+    fill(0);
+    textAlign(CENTER);
+    textSize(20);
+    text('Hard Mode', fastButtonX + 75, buttonY + 245);
 }
 
 function mousePressed() {
@@ -180,6 +224,15 @@ function mousePressed() {
         surferImage = loadImage('boysurfer.png');
         gameState = "play";  // Start the game when the boy surfer is selected
         startNewGame();
+    }
+    if (mouseX > width / 2 - 170 && mouseX < width / 2 - 20 && mouseY > height / 2 + 220 && mouseY < height / 2 + 270) {
+        gameMode = 'normal';
+        currentFrameRate = 160; // Set frame rate for normal mode
+        frameRate(currentFrameRate);
+    } else if (mouseX > width / 2 + 20 && mouseX < width / 2 + 170 && mouseY > height / 2 + 220 && mouseY < height / 2 + 270) {
+        gameMode = 'fast';
+        currentFrameRate = 70; // Set frame rate for fast mode
+        frameRate(currentFrameRate);
     }
 }
 
