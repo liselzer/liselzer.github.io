@@ -215,6 +215,16 @@ footer .container {
     color: #6aa1b8; /* Change to a different color on hover (choose your desired color) */
 }
 
+.footer-section-contact a {
+    color: #000; /* Default icon color */
+    margin: 0 10px; /* Add margin between icons */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.footer-section-contact a:hover {
+    color: #6aa1b8; /* Darker color on hover */
+}
+
 .footer-section-links ul li {
     margin-bottom: 10px; /* Space between list items */
     
