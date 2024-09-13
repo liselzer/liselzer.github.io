@@ -170,56 +170,89 @@ footer {
     color: #89c7e0;
     padding: 20px 0;
     text-align: center;
-    margin-top: auto; /* Pushes footer to the bottom */
+    margin-top: auto;
+}
+
+footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .footer-content {
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+    justify-content: space-between; /* Evenly distribute sections */
+    width: 100%; /* Ensure full width */
+    max-width: 1000px; /* Optional: limit maximum width */
 }
 
-.footer-section {
-    flex: 1;
-    min-width: 250px;
+.footer-section-about,
+.footer-section-links,
+.footer-section-contact {
+    flex: 1; /* Make all sections take equal space */
+    margin: 0 20px; /* Add margin to each section */
+    padding: 20px; /* Add padding for spacing inside the boxes */
+    text-align: center; /* Center text */
+    text-decoration: none;
 }
 
-.footer-section h3 {
-    margin-bottom: 10px; /* Adjusted for mobile */
-    font-size: 1.2em;
+.footer-section-about {
+    padding-bottom: 40px; /* Increase bottom padding for spacing */
 }
 
-.footer-section ul {
+.footer-section-links ul {
     list-style: none;
     padding: 0;
 }
 
-.footer-section ul li {
-    margin-bottom: 10px;
+.footer-section-links a {
+    color: #89c7e0; /* Normal link color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s ease; /* Smooth color transition */
 }
 
-.footer-section ul li a {
+.footer-section-links a:hover {
+    color: #6aa1b8; /* Change to a different color on hover (choose your desired color) */
+}
+
+.footer-section-links ul li {
+    margin-bottom: 10px; /* Space between list items */
+    
+}
+
+.footer-section-contact {
+    display: flex; /* Use flexbox for contact section */
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.footer-section-contact h3 {
+    margin-bottom: 10px; /* Space below the heading */
+}
+
+.footer-section-contact a {
+    margin: 0 10px; /* Space between icons */
     color: #89c7e0;
-    text-decoration: none;
-    transition: color 0.3s;
 }
 
-.footer-section ul li a:hover {
-    color: #6aa1b8;
-}
-
-.footer-section-contact a{
-    text-decoration: none;
-    color: #89c7e0;
+.footer-bottom-container {
+    width: 100%; /* Ensure full width of the container */
+    max-width: 1000px; /* Same max width as footer content */
+    margin: 0 auto; /* Center the container */
 }
 
 .footer-bottom {
     text-align: center;
     margin-top: 20px;
     font-size: 0.9em;
-    border-top: 1px solid #89c7e0;
-    padding-top: 10px; /* Adjusted padding for mobile */
+    padding-top: 10px;
+}
+
+.footer-line {
+    width: 100%; /* Full width of the container */
+    max-width: 1000px; /* Same max width as footer content */
+    border-top: 1px solid #89c7e0; /* Color and style of the line */
+    margin: 10px auto; /* Center the line with margin */
 }
 
 /* Contact Form */
